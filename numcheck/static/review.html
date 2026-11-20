@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Number check: {{TITLE}}</title>
+<style>
+:root {
+  --bg: #f4f1e9; --surface: #ffffff; --raised: #fbfaf6; --ink: #1c2a31; --muted: #5d6a70; --line: #e0d9cb;
+  --accent: #1f566b; --accent-soft: #dcebf0; --accent-ink: #ffffff;
+  --ok: #2c7653; --ok-bg: #d9eee2; --bad: #b0372b; --bad-bg: #f9dcd6; --unk: #85650f; --unk-bg: #f3e8c6;
+  --serif: "Iowan Old Style", "Charter", "Cambria", "Georgia", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --mono: "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --shadow: 0 1px 2px rgba(28, 42, 49, .06), 0 8px 24px rgba(28, 42, 49, .07);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11171a; --surface: #192125; --raised: #1e272c; --ink: #e7e3d9; --muted: #9aa6ac; --line: #2c373c;
+    --accent: #86c0d2; --accent-soft: #1f3640; --accent-ink: #0f1a1f;
+    --ok: #74c99e; --ok-bg: rgba(116, 201, 158, .16); --bad: #f28a7d; --bad-bg: rgba(242, 138, 125, .18);
+    --unk: #e3c46b; --unk-bg: rgba(227, 196, 107, .16);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11171a; --surface: #192125; --raised: #1e272c; --ink: #e7e3d9; --muted: #9aa6ac; --line: #2c373c;
+  --accent: #86c0d2; --accent-soft: #1f3640; --accent-ink: #0f1a1f;
+  --ok: #74c99e; --ok-bg: rgba(116, 201, 158, .16); --bad: #f28a7d; --bad-bg: rgba(242, 138, 125, .18);
+  --unk: #e3c46b; --unk-bg: rgba(227, 196, 107, .16);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); }
+.doc, .stated, .quote { font-variant-numeric: lining-nums; }
+button { font: inherit; color: inherit; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+/* top bar */
+.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+.top .wrap { display: flex; align-items: center; gap: 16px; min-height: 56px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .01em; }
+.mark { width: 28px; height: 28px; border-radius: 7px; background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center; font: 700 15px/1 var(--mono); }
+.files { color: var(--muted); font-size: 13px; display: flex; gap: 6px 14px; flex-wrap: wrap; flex: 1; }
+.files b { color: var(--ink); font-weight: 600; }
+.icon-btn { border: 1px solid var(--line); background: var(--raised); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 13px; }
+.icon-btn:hover { border-color: var(--accent); }
+
+/* summary */
+.summary { padding: 28px 0 8px; }
+.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); font-weight: 600; margin: 0 0 6px; }
+.doc-title { font: 600 clamp(22px, 3.2vw, 30px)/1.2 var(--serif); margin: 0 0 20px; max-width: 30em; }
+.tally { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: 760px; }
+.tile { text-align: left; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 12px 16px 14px;
+  cursor: pointer; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.tile::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--c); }
+.tile .n { display: block; font: 700 30px/1.1 var(--sans); color: var(--c); font-variant-numeric: tabular-nums; }
+.tile .l { font-size: 13px; color: var(--muted); }
+.tile[aria-pressed="true"] { outline: 2px solid var(--c); outline-offset: 1px; }
+.t-bad { --c: var(--bad); } .t-unk { --c: var(--unk); } .t-ok { --c: var(--ok); }
+.bar { display: flex; height: 8px; border-radius: 99px; overflow: hidden; margin: 16px 0 10px; max-width: 760px; background: var(--line); }
+.bar span { display: block; height: 100%; }
+.bar .bad { background: var(--bad); } .bar .unk { background: var(--unk); } .bar .ok { background: var(--ok); }
+.bar-note { font-size: 13px; color: var(--muted); max-width: 760px; margin: 0; }
+.actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.btn { border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); border-radius: 8px; padding: 8px 14px; cursor: pointer; font-weight: 600; font-size: 14px; }
+.btn.ghost { background: transparent; color: var(--accent); }
+
+/* layout */
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 28px; padding: 20px 0 48px; align-items: start; }
+.doc { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 36px 44px; box-shadow: var(--shadow);
+  font: 17px/1.7 var(--serif); }
+.doc h1 { font: 600 24px/1.25 var(--serif); margin: 0 0 14px; }
+.doc h2 { font: 650 13px/1.3 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 30px 0 8px; }
+.doc h3 { font: 600 16px/1.35 var(--sans); margin: 22px 0 6px; }
+.doc p { margin: 0 0 14px; max-width: 70ch; }
+.claim { all: unset; cursor: pointer; border-radius: 4px; padding: 0 3px; margin: 0 -1px; background: var(--b); box-shadow: inset 0 -2px 0 var(--c);
+  transition: opacity .15s, background .15s; -webkit-tap-highlight-color: transparent; }
+.claim:hover { box-shadow: inset 0 -3px 0 var(--c); }
+.claim:focus-visible, .claim.sel { outline: 2px solid var(--accent); outline-offset: 2px; }
+.claim.s-consistent { --c: var(--ok); --b: var(--ok-bg); }
+.claim.s-inconsistent { --c: var(--bad); --b: var(--bad-bg); font-weight: 650; }
+.claim.s-unverifiable { --c: var(--unk); --b: var(--unk-bg); }
+body.f-consistent .claim:not(.s-consistent),
+body.f-inconsistent .claim:not(.s-inconsistent),
+body.f-unverifiable .claim:not(.s-unverifiable) { background: transparent; box-shadow: none; opacity: .5; font-weight: inherit; }
+
+/* panel */
+.panel { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 14px; box-shadow: var(--shadow); }
+.panel-inner { padding: 20px 22px 24px; }
+.panel h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); margin: 22px 0 8px; font-weight: 650; }
+.panel h3:first-child { margin-top: 0; }
+.sheet-close { display: none; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--c); background: var(--b); border-radius: 99px; padding: 3px 10px; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.p-consistent { --c: var(--ok); --b: var(--ok-bg); } .p-inconsistent { --c: var(--bad); --b: var(--bad-bg); } .p-unverifiable { --c: var(--unk); --b: var(--unk-bg); }
+.stated { font: 600 26px/1.2 var(--serif); margin: 10px 0 4px; overflow-wrap: anywhere; }
+.quote { font: 15px/1.6 var(--serif); color: var(--muted); border-left: 3px solid var(--line); padding: 2px 0 2px 12px; margin: 8px 0 0; }
+.quote mark { background: var(--b); color: var(--ink); box-shadow: inset 0 -2px 0 var(--c); border-radius: 3px; padding: 0 2px; }
+.cmp { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; margin: 0; font-size: 14px; }
+.cmp dt { color: var(--muted); }
+.cmp dd { margin: 0; overflow-wrap: anywhere; }
+.cmp .big { font-weight: 700; font-size: 16px; font-variant-numeric: tabular-nums; }
+.calc { font: 13px/1.55 var(--mono); background: var(--raised); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin: 10px 0 0;
+  white-space: pre-wrap; overflow-wrap: anywhere; }
+.callout { border-left: 3px solid var(--c, var(--bad)); background: var(--b, var(--bad-bg)); padding: 10px 12px; border-radius: 0 8px 8px 0; margin: 8px 0 0; font-size: 14px; }
+.callout.note { --c: var(--accent); --b: var(--accent-soft); }
+.callout.why { --c: var(--unk); --b: var(--unk-bg); }
+.how { font-size: 12px; color: var(--muted); display: block; }
+.grid-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; margin-top: 4px; }
+table.grid { border-collapse: collapse; font: 12px/1.35 var(--mono); width: max-content; min-width: 100%; }
+.grid th, .grid td { border: 1px solid var(--line); padding: 4px 7px; text-align: left; vertical-align: top; }
+.grid thead th { background: var(--raised); color: var(--muted); font-weight: 600; text-align: center; }
+.grid .hdr td { background: var(--raised); font-weight: 600; font-family: var(--sans); }
+.grid th.rn { background: var(--raised); color: var(--muted); font-weight: 500; text-align: right; }
+.grid td.wide { white-space: normal; min-width: 180px; max-width: 220px; }
+.grid td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.grid td.used-achieved { background: var(--accent-soft); outline: 2px solid var(--accent); outline-offset: -2px; font-weight: 700; }
+.grid td.used-target { background: var(--accent-soft); outline: 2px dashed var(--accent); outline-offset: -2px; font-weight: 700; }
+.legend-cells { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.issues { list-style: none; margin: 0; padding: 0; }
+.issues li + li { border-top: 1px solid var(--line); }
+.issues button { all: unset; cursor: pointer; display: block; padding: 10px 2px; width: 100%; box-sizing: border-box; }
+.issues button:hover .it { text-decoration: underline; }
+.issues .it { font-weight: 700; color: var(--bad); font-variant-numeric: tabular-nums; }
+.issues .ex { display: block; font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.empty { color: var(--muted); font-size: 14px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-top: 12px; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; background: var(--c); vertical-align: -1px; }
+footer { color: var(--muted); font-size: 13px; padding: 0 0 40px; }
+
+/* upload form (web app only) */
+details.upload { position: relative; }
+details.upload summary { list-style: none; }
+details.upload summary::-webkit-details-marker { display: none; }
+.upload-form { position: absolute; right: 0; top: calc(100% + 8px); z-index: 20; width: min(360px, calc(100vw - 32px)); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); padding: 16px; display: grid; gap: 10px; font-size: 14px; }
+.upload-form label { display: grid; gap: 4px; color: var(--muted); font-size: 13px; }
+.upload-form select, .upload-form input { font: inherit; color: var(--ink); background: var(--raised); border: 1px solid var(--line); border-radius: 8px; padding: 7px 8px; width: 100%; }
+.upload-form hr { border: 0; border-top: 1px solid var(--line); margin: 4px 0; width: 100%; }
+
+@media (max-width: 960px) {
+  .wrap { padding: 0 16px; }
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .doc { padding: 22px 18px; font-size: 16.5px; }
+  .panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 72vh; border-radius: 16px 16px 0 0; z-index: 30;
+    transform: translateY(105%); transition: transform .22s ease; box-shadow: 0 -10px 30px rgba(0,0,0,.18); }
+  .panel.open { transform: translateY(0); }
+  .sheet-close { display: inline-block; position: sticky; top: 0; float: right; margin: 10px 10px 0 0; z-index: 2; }
+  .tile { padding: 10px 12px 12px; }
+  .tile .n { font-size: 24px; }
+  .tile .l { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .panel, .claim { transition: none; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="mark" aria-hidden="true">#</span>Number check</div>
+    <div class="files"><span>Narrative <b>{{NARRATIVE_FILE}}</b></span><span>Workbook <b>{{WORKBOOK_FILE}}</b></span><span>Period checked <b>{{PERIOD}}</b></span></div>
+    {{TOOLBAR}}
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark theme">Theme</button>
+  </div>
+</header>
+
+<section class="summary">
+  <div class="wrap">
+    <p class="eyebrow">Figures in the narrative checked against the indicator table</p>
+    <h1 class="doc-title">{{TITLE}}</h1>
+    <div class="tally" role="group" aria-label="Filter figures by result">
+      <button class="tile t-bad" type="button" data-filter="inconsistent" aria-pressed="false"><span class="n">{{N_BAD}}</span><span class="l">inconsistent</span></button>
+      <button class="tile t-unk" type="button" data-filter="unverifiable" aria-pressed="false"><span class="n">{{N_UNK}}</span><span class="l">unverifiable</span></button>
+      <button class="tile t-ok" type="button" data-filter="consistent" aria-pressed="false"><span class="n">{{N_OK}}</span><span class="l">consistent</span></button>
+    </div>
+    <div class="bar" aria-hidden="true"><span class="bad" style="width:{{W_BAD}}%"></span><span class="unk" style="width:{{W_UNK}}%"></span><span class="ok" style="width:{{W_OK}}%"></span></div>
+    <p class="bar-note">Unverifiable means no row in the workbook clearly matches the figure. The checker leaves those for a person rather than guess.</p>
+    <div class="actions">
+      <button class="btn" type="button" id="next">Next inconsistency</button>
+      <button class="btn ghost" type="button" data-filter="all">Show all figures</button>
+    </div>
+  </div>
+</section>
+
+<main class="wrap layout">
+  <article class="doc" id="doc">
+{{NARRATIVE}}
+  </article>
+  <aside class="panel" id="panel" aria-live="polite" aria-label="Details of the selected figure">
+    <button class="icon-btn sheet-close" type="button" id="close">Close</button>
+    <div class="panel-inner" id="panel-inner"></div>
+  </aside>
+</main>
+
+<footer class="wrap">
+  <div class="legend"><span style="--c:var(--bad)">Inconsistent with the workbook</span><span style="--c:var(--unk)">Unverifiable</span><span style="--c:var(--ok)">Consistent</span></div>
+  <p>Generated by numcheck. Every result comes from fixed rules in a config file; no AI service is called and nothing leaves this machine.</p>
+</footer>
+
+<script id="data" type="application/json">{{DATA}}</script>
+<script>
+(function () {
+  "use strict";
+  var data = JSON.parse(document.getElementById("data").textContent);
+  var claims = data.claims;
+  var panel = document.getElementById("panel");
+  var inner = document.getElementById("panel-inner");
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".claim"));
+  var selected = null;
+  var STATUS = { consistent: "Consistent", inconsistent: "Inconsistent", unverifiable: "Unverifiable" };
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function mobile() { return window.matchMedia("(max-width: 960px)").matches; }
+
+  function cellTable(c) {
+    if (!c.rows || !c.rows.length) return "";
+    var used = {};
+    c.cells.forEach(function (x) { used[x.col + x.row] = x.role; });
+    var cols = data.columns;
+    var h = '<div class="grid-wrap"><table class="grid"><thead><tr><th></th>';
+    cols.forEach(function (L) { h += "<th>" + L + "</th>"; });
+    h += '</tr></thead><tbody><tr class="hdr"><th class="rn">' + data.header_row + "</th>";
+    data.headers.forEach(function (t) { h += "<td>" + esc(t) + "</td>"; });
+    h += "</tr>";
+    var shown = c.rows.slice(0, 14);
+    shown.forEach(function (r) {
+      var vals = data.rows[r] || [];
+      h += '<tr><th class="rn">' + r + "</th>";
+      cols.forEach(function (L, k) {
+        var role = used[L + r];
+        var v = vals[data.col_index[k]];
+        if (v == null) v = "";
+        var cls = [];
+        if (role) cls.push("used-" + role);
+        if (String(v).length > 24) cls.push("wide");
+        if (/^[\d,.%]+$/.test(String(v))) cls.push("num");
+        h += "<td" + (cls.length ? ' class="' + cls.join(" ") + '"' : "") + ">" + esc(v) + "</td>";
+      });
+      h += "</tr>";
+    });
+    h += "</tbody></table></div>";
+    if (c.rows.length > shown.length) h += '<p class="legend-cells">' + (c.rows.length - shown.length) + " more rows not shown.</p>";
+    h += '<p class="legend-cells">Sheet "' + esc(data.sheet) + '". Solid outline: achieved value used. Dashed outline: target used. Indicator ID, name and unit columns are left out here.</p>';
+    return h;
+  }
+
+  function detail(c) {
+    var s = c.sentence;
+    var quote = esc(s.slice(0, c.s_from)) + "<mark>" + esc(s.slice(c.s_from, c.s_to)) + "</mark>" + esc(s.slice(c.s_to));
+    var h = '<span class="pill p-' + c.status + '">' + STATUS[c.status] + "</span>";
+    h += '<div class="stated">' + esc(c.text) + "</div>";
+    h += '<blockquote class="quote p-' + c.status + '">' + quote + "</blockquote>";
+    if (c.status === "unverifiable") {
+      h += "<h3>Why it was not checked</h3>";
+      h += '<div class="callout why">' + esc(c.reason ? c.reason.charAt(0).toUpperCase() + c.reason.slice(1) : "No matching row.") + "</div>";
+      (c.notes || []).forEach(function (n) { h += '<div class="callout note">' + esc(n) + "</div>"; });
+    } else {
+      h += "<h3>Result</h3><dl class=\"cmp\">";
+      h += "<dt>Report says</dt><dd class=\"big\">" + esc(c.text) + "</dd>";
+      h += "<dt>Workbook gives</dt><dd class=\"big\">" + esc(c.expected) + "</dd>";
+      if (c.tolerance) h += "<dt>Allowed</dt><dd>" + esc(c.tolerance) + "</dd>";
+      h += "</dl>";
+      if (c.calculation) h += '<div class="calc">' + esc(c.calculation) + "</div>";
+      (c.hints || []).forEach(function (n) { h += '<div class="callout">' + esc(n) + "</div>"; });
+      (c.notes || []).forEach(function (n) { h += '<div class="callout note">' + esc(n) + "</div>"; });
+    }
+    var it = c.interp || {};
+    if (it.indicator) {
+      h += "<h3>Read as</h3><dl class=\"cmp\">";
+      h += "<dt>Indicator</dt><dd>" + esc(it.indicator) + '<span class="how">' + esc(it.via) + "</span></dd>";
+      h += "<dt>Measure</dt><dd>" + esc(it.measure) + "</dd>";
+      h += "<dt>Location</dt><dd>" + esc(it.location) + '<span class="how">' + esc(it.location_how) + "</span></dd>";
+      h += "<dt>Period</dt><dd>" + esc(it.period) + '<span class="how">' + esc(it.period_how) + "</span></dd>";
+      if (it.sex) h += "<dt>Sex</dt><dd>" + esc(it.sex) + "</dd>";
+      h += "</dl>";
+    }
+    if (c.rows && c.rows.length) h += "<h3>Matched cells</h3>" + cellTable(c);
+    return h;
+  }
+
+  function overview() {
+    var bad = claims.filter(function (c) { return c.status === "inconsistent"; });
+    var h = "<h3>To fix before sending</h3>";
+    if (!bad.length) {
+      h += '<p class="empty">No figure disagrees with the workbook. ' + data.counts.unverifiable + " figures could not be matched and are worth a quick look.</p>";
+    } else {
+      h += '<ul class="issues">';
+      bad.forEach(function (c) {
+        var ex = c.sentence.length > 90 ? c.sentence.slice(0, 88) + "..." : c.sentence;
+        h += '<li><button type="button" data-go="' + c.i + '"><span class="it">' + esc(c.text) + "</span>";
+        h += c.expected ? ' <span class="how" style="display:inline">workbook: ' + esc(c.expected) + "</span>" : "";
+        h += '<span class="ex">' + esc(ex) + "</span></button></li>";
+      });
+      h += "</ul>";
+    }
+    h += '<h3>How to read this page</h3><p class="empty">Click any highlighted figure to see the sentence, the spreadsheet cells it was matched to and the calculation.</p>';
+    return h;
+  }
+
+  function select(i, scroll) {
+    var c = claims[i];
+    if (!c) return;
+    if (selected !== null && buttons[selected]) buttons[selected].classList.remove("sel");
+    selected = i;
+    var b = document.querySelector('.claim[data-i="' + i + '"]');
+    if (b) {
+      b.classList.add("sel");
+      if (scroll) b.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+    inner.innerHTML = detail(c);
+    panel.scrollTop = 0;
+    if (mobile()) panel.classList.add("open");
+  }
+
+  document.getElementById("doc").addEventListener("click", function (e) {
+    var b = e.target.closest(".claim");
+    if (b) select(+b.getAttribute("data-i"), false);
+  });
+  inner.addEventListener("click", function (e) {
+    var g = e.target.closest("[data-go]");
+    if (g) select(+g.getAttribute("data-go"), true);
+  });
+  document.getElementById("close").addEventListener("click", function () { panel.classList.remove("open"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") panel.classList.remove("open"); });
+
+  var order = claims.filter(function (c) { return c.status === "inconsistent"; }).map(function (c) { return c.i; });
+  var cursor = -1;
+  document.getElementById("next").addEventListener("click", function () {
+    if (!order.length) { inner.innerHTML = overview(); if (mobile()) panel.classList.add("open"); return; }
+    cursor = (cursor + 1) % order.length;
+    select(order[cursor], true);
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-filter]"), function (f) {
+    f.addEventListener("click", function () {
+      var v = f.getAttribute("data-filter");
+      var on = f.getAttribute("aria-pressed") === "true";
+      document.body.classList.remove("f-consistent", "f-inconsistent", "f-unverifiable");
+      Array.prototype.forEach.call(document.querySelectorAll(".tile"), function (t) { t.setAttribute("aria-pressed", "false"); });
+      if (v !== "all" && !on) {
+        document.body.classList.add("f-" + v);
+        f.setAttribute("aria-pressed", "true");
+      }
+    });
+  });
+
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem("numcheck-theme"); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
+  document.getElementById("theme").addEventListener("click", function () {
+    var dark = root.getAttribute("data-theme") ? root.getAttribute("data-theme") === "dark"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var next = dark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("numcheck-theme", next); } catch (e) {}
+  });
+
+  inner.innerHTML = overview();
+  var m = /[#&]claim=(\d+)/.exec(location.hash);
+  if (m) select(+m[1], false);
+})();
+</script>
+</body>
+</html>

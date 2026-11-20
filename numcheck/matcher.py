@@ -65,10 +65,16 @@ class Matcher:
         for loc in wb.locations:
             loc_stems |= content_stems(loc)
         self.keywords = {}
+        self.kw_word: dict[str, dict[str, str]] = {}
         for ind in wb.indicators.values():
             kws = content_stems(ind.name) - self.unit_stems - self.sex_stems - loc_stems
             kws = {k for k in kws if not k[0].isdigit() and k not in STOPWORDS and len(k) > 1}
             self.keywords[ind.id] = kws
+            words = {}
+            for t in tokens(ind.name):
+                for part in [t.low] + t.low.split("-"):
+                    words.setdefault(stem(part), part)
+            self.kw_word[ind.id] = words
         # location name -> list of regex-able aliases
         self.loc_aliases: dict[str, list[str]] = {}
         for loc in wb.locations:
@@ -99,12 +105,13 @@ class Matcher:
         total, hits = 0.0, []
         for k in sorted(self.keywords[ind.id]):
             ek = self.expand({k})
+            word = self.kw_word.get(ind.id, {}).get(k, k)
             if ek & sent:
                 total += 1.0
-                hits.append(k)
+                hits.append(word)
             elif ek & ctx:
                 total += self.cfg.context_weight
-                hits.append(f"{k} (context)")
+                hits.append(f"{word} (nearby)")
         return total, hits
 
     def pick(self, cands: list[Indicator], ctx: Context, interp: Interpretation, why: str) -> bool:
