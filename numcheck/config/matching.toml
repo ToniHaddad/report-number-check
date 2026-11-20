@@ -85,7 +85,8 @@ subset = ["affected", "delayed", "rescheduled", "postponed", "cancelled", "faile
           "could not", "pending", "remaining", "dropped out", "excluded", "rejected",
           "awaiting", "not yet", "deactivated", "average", "on average", "per household",
           "per person", "per family", "per month", "per day", "per child", "per student",
-          "per site", "each"]
+          "per site", "each", "every", "referred", "newly", "headed by", "female-headed",
+          "male-headed", "disability", "disabilities"]
 target = ["target", "targets", "targeted", "planned", "plan of"]
 
 # Hedge words and the tolerance each one allows. "low" and "high" are factors

@@ -116,7 +116,7 @@ BLOCKS = [
           "{bh_target}, or {bh_pct_wrong} of the target. In Turkana, {bh_turkana} boreholes were "
           "rehabilitated, with new solar pumps fitted at [[three|unverifiable]] sites. In Turkana alone, the "
           "rehabilitated boreholes serve {water_turkana_k} people."),
-    ("p", "Across the three counties, the rehabilitated water points give safe water to {water_total2} "
+    ("p", "Across the [[three|unverifiable]] counties, the rehabilitated water points give safe water to {water_total2} "
           "people: {water_f} women and girls and {water_m} men and boys. Waiting times at the water points "
           "fell sharply once the second tap stands were installed, and women's groups in Marsabit reported "
           "less conflict at the water points in the evening."),
