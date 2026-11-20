@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[dev]"
+      - run: pytest -q
+      - name: Data generator reproduces the committed files
+        run: |
+          python scripts/generate_data.py
+          git diff --stat --exit-code -- data/*/gold.json data/*/report.md
+      - name: The CLI fails the build when a report has an inconsistent figure
+        run: |
+          set +e
+          python -m numcheck check data/kenya-wash-q3-2026/report.docx data/kenya-wash-q3-2026/indicators.xlsx -q
+          test $? -eq 1

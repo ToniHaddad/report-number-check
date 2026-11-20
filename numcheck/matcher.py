@@ -17,7 +17,9 @@ from .workbook import Indicator, Workbook, period_phrases
 BREAK_WORDS = {"were", "was", "are", "is", "have", "has", "had", "received", "in", "at", "from", "with", "who",
                "which", "that", "and", "to", "by", "for", "of", "this", "against", "on", "across", "per",
                "during", "through", "or", "than", "while", "since", "over", "under", "between", "after",
-               "before", "because", "so", "but", "took", "attended", "completed", "now", "still", "had"}
+               "before", "because", "so", "but", "took", "attended", "completed", "now", "still", "had",
+               "last", "previous", "prior", "next", "a", "an", "each", "more", "fewer", "less",
+               "respectively", "overall", "altogether", "alone", "only", "in total"}
 SKIP_AFTER = {"of", "them", "whom", "were", "are", "was", "being", "these", "those", "who", "the"}
 ANAPHORS = ("this", "that", "it", "these", "which", "together", "overall", "altogether")
 MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october",
@@ -445,6 +447,10 @@ class Matcher:
                         return it
             if not inherited:
                 if unit is None and sex:
+                    if antecedent and not antecedent.indicator.has_sex:
+                        it.unverifiable = (f"refers to {antecedent.indicator.id}, which is not broken down "
+                                           f"by sex in the workbook")
+                        return it
                     if antecedent and antecedent.indicator.has_sex:
                         self._inherit(it, antecedent, keep_measure=False)
                         it.sex = sex

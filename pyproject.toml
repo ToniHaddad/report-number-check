@@ -31,3 +31,4 @@ numcheck = ["config/*.toml", "static/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+filterwarnings = ["ignore:Using `httpx`"]
