@@ -1,0 +1,87 @@
+
+colombia-education-q3-2026
+  non-claim taken as a claim: '80 per cent' (threshold) -> inconsistent
+  wrong cells for '75': tool ['Matrix!H30'] gold ['Matrix!G30']
+  [consistent -> inconsistent] '75' (att_target) H30 = 66.0%
+      Roughly two thirds of enrolled children attended at least 80 per cent of sessions, short of the 75 per cent benchmark agreed with the donor.
+  [consistent -> unverifiable] '1,294' (enr_lg) no unit next to the number and nothing earlier in the sentence to refer to
+      La Guajira: 1,294; Arauca: 1,007; Norte de Santander: 1,135.
+  [consistent -> unverifiable] '1,007' (enr_ar) no unit next to the number and nothing earlier in the sentence to refer to
+      La Guajira: 1,294; Arauca: 1,007; Norte de Santander: 1,135.
+  [consistent -> unverifiable] '1,135' (enr_ns) no unit next to the number and nothing earlier in the sentence to refer to
+      La Guajira: 1,294; Arauca: 1,007; Norte de Santander: 1,135.
+  [consistent -> unverifiable] '51' (enr_girls_share) weak match: best indicator CO-1.1 scored 0 on keywords (needs 1)
+      Girls accounted for 51 per cent of all learners.
+  [consistent -> unverifiable] '2,969' (enr_prev) no unit next to the number and nothing earlier in the sentence to refer to
+      The figure stood at 2,969 at the end of June, so the programme grew by more than 400 children over the quarter, almost all of them in La Guajira.
+  non-claim taken as a claim: '80 per cent' (threshold) -> unverifiable
+  wrong cells for '3,303': tool ['Matrix!H22'] gold ['Matrix!H20', 'Matrix!H21', 'Matrix!H22']
+  [consistent -> unverifiable] 'sixteen' (spaces_total) no indicator in the workbook counts classrooms
+      The team also set up sixteen temporary learning spaces against a target of nineteen, using tents and rehabilitated community halls.
+  [consistent -> not extracted] 'nineteen' (spaces_target) 
+      
+  [inconsistent -> unverifiable] '1,050' (hedge_overstates) counts something the workbook has no unit for
+      Upwards of 1,050 parents and caregivers attended school committee meetings this quarter, roughly 73 per cent of them mothers or female caregivers.
+  [consistent -> unverifiable] '87' (meals_pct) weak match: best indicator CO-1.3 scored 0.5 on keywords (needs 1)
+      196.0 thousand hot meals were served over the quarter, 87 per cent of the plan.
+  non-claim taken as a claim: '80 per cent' (threshold) -> unverifiable
+
+== colombia-education-q3-2026 (heldout) ==
+  claims in gold                        32  (consistent 20, planted errors 6, not in workbook 6)
+  planted errors caught                 5/6 (83%)
+  wrong figures passed as consistent    0 planted errors, 0 claims with no workbook support
+  false alarms                          1 of 20 correct figures; 0 of 6 figures not in the workbook
+  correct figures confirmed             11/20 (55%)
+  correct figures left unverifiable     7
+  claims matched to the right cell(s)   15/26 (58%) of checkable claims (15/17 of those the tool attempted)
+  figures not extracted                 1
+  non-claims ignored                    21/24 (88%)
+  numbers extracted that are not in gold 0
+
+== kenya-wash-q3-2026 (tuning) ==
+  claims in gold                        43  (consistent 25, planted errors 5, not in workbook 13)
+  planted errors caught                 5/5 (100%)
+  wrong figures passed as consistent    0 planted errors, 0 claims with no workbook support
+  false alarms                          0 of 25 correct figures; 0 of 13 figures not in the workbook
+  correct figures confirmed             25/25 (100%)
+  correct figures left unverifiable     0
+  claims matched to the right cell(s)   30/30 (100%) of checkable claims (30/30 of those the tool attempted)
+  figures not extracted                 0
+  non-claims ignored                    29/29 (100%)
+  numbers extracted that are not in gold 0
+
+== lebanon-cash-q3-2026 (tuning) ==
+  claims in gold                        45  (consistent 20, planted errors 5, not in workbook 20)
+  planted errors caught                 5/5 (100%)
+  wrong figures passed as consistent    0 planted errors, 0 claims with no workbook support
+  false alarms                          0 of 20 correct figures; 0 of 20 figures not in the workbook
+  correct figures confirmed             20/20 (100%)
+  correct figures left unverifiable     0
+  claims matched to the right cell(s)   25/25 (100%) of checkable claims (25/25 of those the tool attempted)
+  figures not extracted                 0
+  non-claims ignored                    49/49 (100%)
+  numbers extracted that are not in gold 0
+
+== ALL HELDOUT REPORTS ==
+  claims in gold                        32  (consistent 20, planted errors 6, not in workbook 6)
+  planted errors caught                 5/6 (83%)
+  wrong figures passed as consistent    0 planted errors, 0 claims with no workbook support
+  false alarms                          1 of 20 correct figures; 0 of 6 figures not in the workbook
+  correct figures confirmed             11/20 (55%)
+  correct figures left unverifiable     7
+  claims matched to the right cell(s)   15/26 (58%) of checkable claims (15/17 of those the tool attempted)
+  figures not extracted                 1
+  non-claims ignored                    21/24 (88%)
+  numbers extracted that are not in gold 0
+
+== ALL TUNING REPORTS ==
+  claims in gold                        88  (consistent 45, planted errors 10, not in workbook 33)
+  planted errors caught                 10/10 (100%)
+  wrong figures passed as consistent    0 planted errors, 0 claims with no workbook support
+  false alarms                          0 of 45 correct figures; 0 of 33 figures not in the workbook
+  correct figures confirmed             45/45 (100%)
+  correct figures left unverifiable     0
+  claims matched to the right cell(s)   55/55 (100%) of checkable claims (55/55 of those the tool attempted)
+  figures not extracted                 0
+  non-claims ignored                    78/78 (100%)
+  numbers extracted that are not in gold 0

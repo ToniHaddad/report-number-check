@@ -1,0 +1,35 @@
+data/lebanon-cash-q3-2026/report.docx vs data/lebanon-cash-q3-2026/indicators.xlsx (sheet 'Indicators', period checked Q3 2026)
+45 figures: 5 inconsistent, 20 unverifiable, 20 consistent
+
+INCONSISTENT  '103 percent'  workbook: 89.7%
+    sentence: During the third quarter of 2026, Northbridge Relief delivered multipurpose cash assistance to 3,408 households across Akkar, Tripoli and the Bekaa, reaching 103 percent of the quarterly target.
+    read as:  LB-1.1 pct_target, all locations, Q3 2026
+    calc:     (H8 + H9 + H10) / (G8 + G9 + G10) = 3,408 / 3,800 = 89.7%
+    hint:     The stated percentage matches achieved over the Q2 2026 target: (H8 + H9 + H10) / (G5 + G6 + G7) = 3,408 / 3,300 = 103.3%. Worked out against the wrong target?
+
+INCONSISTENT  '974'  workbook: 947
+    sentence: Akkar accounted for 1,345 households, Tripoli for 974 and the Bekaa for 1,116.
+    read as:  LB-1.1 achieved, Tripoli, Q3 2026
+    calc:     H9 = 947
+    hint:     Two digits look swapped: the workbook says 947, the report says 974.
+    note:     Sum check in the text: the locations 1,345 + 974 + 1,116 = 3,435, but the stated total is 3,408 (a gap of 27).
+
+INCONSISTENT  '7,758'  workbook: 7,858
+    sentence: Of the 16,133 people living in assisted households, 8,275 were women and girls and 7,758 were men and boys.
+    read as:  LB-1.2 achieved, all locations, Q3 2026, male
+    calc:     H18 + H20 + H22 = 7,858
+    note:     Sum check in the text: women/girls plus men/boys 8,275 + 7,758 = 16,033, but the stated total is 16,133 (a gap of 100).
+
+INCONSISTENT  '301'  workbook: 272
+    sentence: Of these, 301 were closed within 14 days, the standard set in the feedback procedure (see Annex 2, page 14).
+    read as:  LB-3.2 achieved, all locations, Q3 2026
+    calc:     H52 + H53 + H54 = 272
+    hint:     The stated figure is the Q2 2026 value (H49 + H50 + H51 = 301). Left over from an earlier report?
+
+INCONSISTENT  'more than USD 2.8 million'  workbook: 2,744,270
+    sentence: Since April, more than USD 2.8 million has been transferred through the programme, and a mid-term review is scheduled for November 2026.
+    read as:  LB-1.3 achieved, all locations, Q2 2026, Q3 2026
+    calc:     H23 + H24 + H25 + H26 + H27 + H28 = 2,744,270
+    hint:     'more than' overstates: the workbook value 2,744,270 is not above 2,800,000.
+review page written to review.html
+exit code: 1
