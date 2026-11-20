@@ -1,0 +1,114 @@
+# Matching rules for numcheck. Edit this file to teach the checker your own
+# vocabulary; no code change is needed. Words are matched after light
+# stemming (plural "s", "ed", "ing", "ion" endings), so list base forms.
+
+# Canonical unit -> words in the narrative that name it. The unit of each
+# indicator comes from the "Unit" column of the workbook and is looked up here.
+[units]
+households = ["household", "households", "family", "families"]
+people = ["people", "person", "persons", "individual", "individuals", "beneficiary",
+          "beneficiaries", "participant", "participants", "resident", "residents",
+          "staff", "volunteer", "volunteers", "member", "members", "member of"]
+children = ["child", "children", "learner", "learners", "student", "students", "pupil", "pupils"]
+teachers = ["teacher", "teachers", "educator", "educators", "facilitator", "facilitators"]
+usd = ["usd", "us$", "$", "dollar", "dollars"]
+surveys = ["survey", "surveys", "interview", "interviews"]
+cases = ["case", "cases", "complaint", "complaints"]
+boreholes = ["borehole", "boreholes", "well", "wells"]
+latrines = ["latrine", "latrines", "toilet", "toilets"]
+kits = ["kit", "kits"]
+schools = ["school", "schools"]
+classrooms = ["classroom", "classrooms", "learning space", "learning spaces"]
+meals = ["meal", "meals"]
+percent = ["%", "percent", "per cent"]
+
+# Units that count people. A bare "women" or "girls" next to a number can
+# only belong to an indicator with one of these units.
+person_units = ["people", "children", "teachers"]
+
+# Sex words. The workbook's sex column may say Female/Male/All, F/M/Total,
+# Women/Men/Both; all are normalised to these three keys.
+[sex]
+female = ["women", "woman", "female", "females", "girl", "girls"]
+male = ["men", "man", "male", "males", "boy", "boys"]
+
+# Keyword synonyms: every word on the right counts as the word on the left
+# when an indicator name is compared with the words around a claim.
+[synonyms]
+household = ["family", "families"]
+assistance = ["assisted", "assist", "support", "supported", "help", "helped"]
+cash = ["cash", "transfer", "transfers", "transferred", "e-card", "payment", "payments"]
+receiving = ["received", "receive", "reached", "assisted", "benefited"]
+rehabilitated = ["repaired", "restored", "rehabilitation", "fixed", "refurbished"]
+constructed = ["built", "construction", "dug", "completed"]
+distributed = ["handed out", "delivered", "distribution", "provided"]
+trained = ["training", "trainings", "course", "courses", "workshop", "workshops"]
+complaints = ["complaint", "feedback", "grievance", "grievances", "hotline"]
+closed = ["resolved", "answered", "settled"]
+access = ["accessing", "use", "using", "served"]
+water = ["water"]
+hygiene = ["hygiene", "handwashing", "sanitation"]
+promotion = ["promoters", "promoter", "sessions", "awareness"]
+safeguarding = ["psea", "protection from sexual exploitation"]
+committee = ["committees", "committee"]
+
+# Location aliases: the workbook's location values are always recognised;
+# these add other names for the same place.
+[locations]
+"Bekaa" = ["Bekaa", "Beqaa", "Bekaa valley"]
+"Tripoli" = ["Tripoli", "Tarablus"]
+"Akkar" = ["Akkar"]
+"Turkana" = ["Turkana", "Lodwar"]
+"Marsabit" = ["Marsabit"]
+"Garissa" = ["Garissa", "Dadaab"]
+
+# Words that mean "all locations together".
+all_locations = ["in total", "overall", "across all", "across the three", "combined", "altogether"]
+
+[periods]
+# Phrases that point to the period before the current one.
+previous = ["last quarter", "previous quarter", "preceding quarter", "prior quarter",
+            "up from", "down from", "previous reporting period", "last reporting period"]
+# Phrases that point to all periods up to the current one. "since <month>"
+# and "since <month> <year>" are also recognised.
+cumulative = ["since the start", "since the beginning", "to date", "cumulative",
+              "cumulatively", "since project start", "since the project began"]
+# Phrases that confirm the current period (no effect on the value; recorded).
+current = ["this quarter", "the quarter", "this reporting period", "during the quarter"]
+
+# Claims in a clause containing one of these are about a plan or a subset
+# the workbook does not record, so they are reported as unverifiable.
+[cues]
+future = ["will", "plans to", "planned for next", "next quarter", "aims to", "expected to",
+          "fourth quarter", "coming quarter", "intends to", "by the end of the year"]
+subset = ["affected", "delayed", "rescheduled", "postponed", "cancelled", "failed",
+          "could not", "pending", "remaining", "dropped out", "excluded", "rejected",
+          "awaiting", "not yet", "deactivated", "average", "on average", "per household",
+          "per person", "per family", "per month", "per day", "per child", "per student",
+          "per site", "each"]
+target = ["target", "targets", "targeted", "planned", "plan of"]
+
+# Hedge words and the tolerance each one allows. "low" and "high" are factors
+# of the stated value: the workbook value must lie in [low * stated, high * stated].
+# For "about" the window is symmetric.
+[hedges]
+nearly = { words = ["nearly", "almost", "close to", "just under", "approaching", "not quite"], low = 0.95, high = 1.0 }
+about = { words = ["about", "around", "approximately", "roughly", "some", "an estimated", "estimated", "circa", "approx."], low = 0.95, high = 1.05 }
+over = { words = ["over", "more than", "above", "upwards of", "in excess of", "just over", "a little over", "slightly more than"], low = 1.0, high = 1.10, strict_low = true }
+at_least = { words = ["at least", "no fewer than", "no less than"], low = 1.0, high = 1.10 }
+under = { words = ["under", "fewer than", "less than", "below", "just below"], low = 0.90, high = 1.0, strict_high = true }
+up_to = { words = ["up to", "as many as"], low = 0.90, high = 1.0 }
+
+[fractions]
+# Fractions are compared as percentages, with this many points either side.
+tolerance_points = 2.5
+hedged_tolerance_points = 4.0
+
+[match]
+# A claim is matched to an indicator only when the keyword score of the best
+# indicator reaches min_score and beats the runner-up by min_margin.
+# Words in the claim's own sentence count 1, words in the previous sentence
+# of the paragraph or in the section heading count 0.5.
+min_score = 1.0
+min_margin = 0.5
+context_weight = 0.5
