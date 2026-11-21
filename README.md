@@ -1,17 +1,20 @@
 # report-number-check
 
-Finds the figures in a narrative donor report that disagree with the indicator spreadsheet behind it.
+Finds the figures in a narrative donor report that disagree with the indicator, dispatch and stock records behind it.
 
-![Review page: a quarterly report with every figure coloured by result, and the selected figure's calculation and matched spreadsheet cells](docs/review-desktop.png)
+![Review page: a food assistance report with every figure coloured by result; the selected figure, 1,896 "boxes" of canned cheese, is shown to be the number of pieces, with the matched dispatch cells](docs/review-desktop.png)
 
-<sub>More screenshots: [phone](docs/review-mobile.png), [dark theme](docs/review-dark.png). All data shown is synthetic; Northbridge Relief is a fictional organisation.</sub>
+<sub>More screenshots: [phone](docs/review-mobile.png), [dark theme](docs/review-dark.png). All data shown is synthetic.</sub>
 
 ## The need
 
-A quarterly donor report is written in Word by one person from an indicator spreadsheet kept by another.
-Last quarter's figure is left in a paragraph, two digits are swapped, a percentage is worked out against
-the wrong target. Donors notice. Checking every number by hand against the spreadsheet takes hours and is
-the first thing skipped at deadline.
+A humanitarian organization in Lebanon writes a quarterly report for each donor-funded project. The
+narrative is written in Word by programme staff, but its figures come from records kept by other people:
+the indicator table, and the warehouse records of what was received, dispatched on waybills and left in
+stock, counted in pieces with boxes as a convenience. Figures go wrong on the way: 1,896 pieces of canned
+cheese become "1,896 boxes", the household count is quoted as "people", a stock balance does not equal
+received minus dispatched, a total across districts does not add up. Checking every number by hand takes
+hours and is the first thing dropped at deadline.
 
 ## Try it
 
@@ -19,51 +22,40 @@ the first thing skipped at deadline.
 python -m venv .venv
 .venv\Scripts\activate          # or: source .venv/bin/activate
 pip install -e .
-numcheck check data/lebanon-cash-q3-2026/report.docx data/lebanon-cash-q3-2026/indicators.xlsx --out review.html
+numcheck check data/fa-2026-q3/report.docx data/fa-2026-q3/indicators.xlsx --out review.html
 ```
 
 (`python -m numcheck ...` does the same if your machine blocks new executables.) Real output, abridged
 from [docs/sample-output.txt](docs/sample-output.txt):
 
 ```
-45 figures: 5 inconsistent, 20 unverifiable, 20 consistent
+44 figures: 7 inconsistent, 6 unverifiable, 31 consistent
 
-INCONSISTENT  '103 percent'  workbook: 89.7%
-    sentence: During the third quarter of 2026, Northbridge Relief delivered multipurpose cash assistance to 3,408 households across Akkar, Tripoli and the Bekaa, reaching 103 percent of the quarterly target.
-    read as:  LB-1.1 pct_target, all locations, Q3 2026
-    calc:     (H8 + H9 + H10) / (G8 + G9 + G10) = 3,408 / 3,800 = 89.7%
-    hint:     The stated percentage matches achieved over the Q2 2026 target: (H8 + H9 + H10) / (G5 + G6 + G7) = 3,408 / 3,300 = 103.3%. Worked out against the wrong target?
+INCONSISTENT  '3,513'  workbook: 16,697
+    sentence: In total the project supported 3,513 people.
+    read as:  FA-2 achieved, all locations, Q3 2026
+    calc:     SUM of 8 cells (I21 ... I28) = 16,697
+    hint:     The stated figure is the number of households (FA-1: I9 + I10 + I11 + I12 = 3,513), not people. Households and individuals mixed up?
 
-INCONSISTENT  '974'  workbook: 947
-    sentence: Akkar accounted for 1,345 households, Tripoli for 974 and the Bekaa for 1,116.
-    read as:  LB-1.1 achieved, Tripoli, Q3 2026
-    calc:     H9 = 947
-    hint:     Two digits look swapped: the workbook says 947, the report says 974.
-    note:     Sum check in the text: the locations 1,345 + 974 + 1,116 = 3,435, but the stated total is 3,408 (a gap of 27).
+INCONSISTENT  '1,896'  workbook: 79
+    sentence: From WH-03, the Tripoli centre received 1,896 boxes of canned cheese for families with young children, ...
+    read as:  dispatch sheet, Canned cheese 200 g (FOO-CHE-002), dispatched, destination Tripoli centre, warehouse WH-03 Tripoli, Q3 2026, in boxes
+    calc:     I48 + I61 + I74 = 1,896 pieces / 24 per box = 79 boxes
+    hint:     The stated figure is the number of pieces (1,896). In boxes of 24 it is 79. Pieces written as boxes?
 
-INCONSISTENT  '301'  workbook: 272
-    sentence: Of these, 301 were closed within 14 days, the standard set in the feedback procedure (see Annex 2, page 14).
-    read as:  LB-3.2 achieved, all locations, Q3 2026
-    calc:     H52 + H53 + H54 = 272
-    hint:     The stated figure is the Q2 2026 value (H49 + H50 + H51 = 301). Left over from an earlier report?
-
-(two more: a women/men split that does not add up, and "more than USD 2.8 million" against 2,744,270)
+INCONSISTENT  '468'  workbook: 528
+    sentence: The warehouse received 1,200 bottles, dispatched 792 and closed the quarter with a balance of 468 bottles.
+    read as:  stock sheet, Sunflower oil 1 L (FOO-OIL-001), closing, warehouse WH-03 Tripoli, Q3 2026, in pieces
+    calc:     J25 = 528 pieces
+    note:     Stock arithmetic in the text: opening 120 + received 1,200 - dispatched 792 = 528, but the stated balance is 468.
+...
 review page written to review.html
 ```
 
-`review.html` is one self-contained file (no external scripts or fonts) that can be emailed or attached
-to a pull request. The exit code is 1 when any figure is inconsistent, 0 when none is, 2 when a file
-cannot be read, so the command can gate a document repository in CI:
-
-```yaml
-- run: numcheck check reports/q3.docx reports/q3-indicators.xlsx --out review.html
-```
-
-The same page runs as a small web app, with a sample picker and an upload form:
-
-```
-numcheck serve        # http://127.0.0.1:8110
-```
+`review.html` is one self-contained file (no external scripts or fonts) that can be shared with the report.
+The exit code is 1 when any figure is inconsistent, 0 when none is, 2 when a file cannot be read, so the
+command can gate a folder of reports in CI. The same page runs as a small web app with a sample picker and
+an upload form: `numcheck serve`, then open http://127.0.0.1:8110.
 
 ## How it works
 
@@ -72,46 +64,45 @@ report always gives the same answer and every answer can be traced to a rule and
 
 | Step | What happens |
 |---|---|
-| Read | `.docx` paragraphs and headings (python-docx) or Markdown; the `.xlsx` indicator table is found by its header row, with loose column names (Achieved or Actual, Location or County or Department, Sex or Gender). Percent-formatted cells are read as percentages. |
-| Extract | Every number in the text: `3,284`, `62%`, `62 per cent`, `USD 1.43 million`, `1.2 thousand`, spelled numbers (`forty-two staff`), fractions (`about a third of`), with the hedge in front (`nearly`, `over`, `at least`, `about`...). Dates, years, section numbers, page and annex references, phone numbers, codes, durations, ages and measurements are skipped. |
-| Interpret | From the words around the number: which indicator (unit word plus keywords and synonyms), which measure (achieved, target, percent of target, share of women, a rate), which location, which period (`last quarter`, `since April`, `second quarter`) and which sex. |
-| Look up | Sum the matching cells; percent of target is achieved over target; share is women over everyone. |
-| Compare | With the rounding implied by how the figure is written (`1.2 thousand` covers 1,150 to 1,250) and the hedge window from the config (`nearly 3,000` allows 2,850 to 3,000, so 2,940 passes and 3,100 fails). |
-| Explain | Where the stated figure is found elsewhere: last quarter's value, another location, a swapped pair of digits, another target. Sum checks inside the text (women plus men, locations against the total). |
+| Read | `.docx` paragraphs, headings and **tables** (each table row is read with its column headers), or Markdown. The `.xlsx` workbook is read sheet by sheet: an indicator table (target, achieved, by district or shelter, sex, age group, period), a dispatch summary (item, pieces per box, warehouse, destination, month, pieces) and a stock sheet (opening, received from purchases and in kind, dispatched, closing). Column names are matched loosely. |
+| Extract | Every number: `3,284`, `62%`, `1.2 thousand`, `forty-two`, `about a third of`, `36 boxes and 17 pieces`, with any hedge (`nearly`, `over`, `about`). Dates, years, section and page references, phone numbers, codes such as `WH-03`, durations and ages are skipped. |
+| Interpret | From the words around the number. Indicator figures: which indicator, district or shelter, period (`last quarter`, `since April`, `at the end of June` is Q2), sex and age group. Stock figures: which item, warehouse, destination, month, and whether received, dispatched, opening or closing, in pieces or boxes. |
+| Look up | Sum the matching cells; boxes are pieces divided by the item's pieces per box. |
+| Compare | With the rounding implied by how the figure is written and the hedge window from the config (`nearly 3,000` allows 2,850 to 3,000). |
+| Explain | Where the stated figure is found elsewhere: the pieces figure quoted as boxes or the reverse, the household figure quoted as people, last quarter's value, two swapped digits. Arithmetic inside the text: women plus men, districts against the total, opening plus received minus dispatched against the balance. |
 
-All vocabulary lives in [numcheck/config/matching.toml](numcheck/config/matching.toml): units, synonyms
-(`households` = `families`), location aliases, period phrases, hedge tolerances, and the words that mark
-a plan or a subset (`will`, `plans to`, `affected`, `per household`).
+All vocabulary lives in [numcheck/config/matching.toml](numcheck/config/matching.toml): units, synonyms,
+place aliases, age words, the words that send a figure to the stock sheets, hedge tolerances.
 
 **The weak-match rule.** A false "consistent" is the worst error this tool can make, so a figure is only
-checked when the match is clear. The best indicator must score at least 1.0 on keywords (a word in the
-sentence counts 1, a word in the previous sentence or the section heading counts 0.5) and beat the
-runner-up by 0.5. A figure with no unit, an unknown unit (`36 shops`), an unclear location, a plan, a
-subset, or a sex split the workbook does not have is reported as **unverifiable**, with the reason. A
-test checks that `Floods damaged 800 households in the North` stays unverifiable even though 800 is
-exactly the North value in the workbook.
+checked when the match is clear: the indicator must score at least 1.0 on keywords and beat the runner-up;
+the item, warehouse and destination must each be unambiguous. Otherwise the figure is reported as
+**unverifiable**, with the reason.
 
 ## The data
 
-[scripts/generate_data.py](scripts/generate_data.py) writes three synthetic quarterly reports for the
-fictional Northbridge Relief, each four pages in Word (page count measured in Word), with its workbook and
-a gold file that labels every number in the text:
+[scripts/generate_data.py](scripts/generate_data.py) writes three synthetic quarterly reports from "the
+Organization", each four pages in Word (measured in Word) with one table, its three-sheet workbook and a
+gold file that labels every number in the text. All projects, warehouses (`WH-03`...), partners, shelters,
+item codes and figures are invented; the place names are Lebanese geography only.
 
 | Report | Use | Figures in gold | Planted errors |
 |---|---|---|---|
-| Cash assistance, Lebanon | tuning | 45 | 5 |
-| Water, sanitation and hygiene, Kenya | tuning | 43 | 5 |
-| Education in emergencies, Colombia | **held out** | 32 | 6 |
+| `FA-2026` food assistance: parcels and food items from four warehouses to centres and partners | tuning | 44 | 7 |
+| `EA-2026` emergency appeal: mattresses, blankets and hygiene kits to collective shelters, in-kind stock | tuning | 47 | 7 |
+| `WASH-2026` hygiene and winterisation in Baalbek, Hermel and Zahle | **held out** | 43 | 7 |
 
-Planted errors: a figure left over from the previous quarter, transposed digits, a percentage against the
-wrong target, a women/men split that does not sum, a hedge that overstates, and (Colombia only) one
-location's figure given for another. The Colombia report uses different phrasing and a different
-workbook layout (`Code`, `Department`, `Gender`, `Planned`, `Actual`, rates stored as fractions).
+Planted errors: pieces quoted as boxes and boxes quoted as pieces; a stock balance that is not opening plus
+received minus dispatched; the household figure quoted as people; a total across districts or a table row
+that does not add up; a women/men split that does not sum; a figure left from the previous quarter; two
+swapped digits; a hedge that overstates.
 
-How the held-out report was kept unseen: I wrote all three generators, including the Colombia text,
-before writing the checker. While tuning, `scripts/benchmark.py` skips the held-out report unless
-`--final` is given. I ran it once, after the rules were frozen at commit `4c79f6b`, and changed nothing
-afterwards. Because I wrote its text, it is less independent than a report written by someone else.
+How the held-out report was kept unseen: I wrote its text, workbook and gold labels first and committed
+them (`76c7398`) before changing any rule for this scenario. While tuning, `scripts/benchmark.py` skips it
+unless `--final` is given. I ran it once, after the rules were frozen at commit `3137a11`, and changed no
+rule afterwards. (I later removed unused entries from the config and reran it only to confirm the output
+was byte-for-byte the same.) Because I wrote its text, it is less independent than a report written by
+someone else.
 
 ## Results
 
@@ -119,75 +110,73 @@ afterwards. Because I wrote its text, it is less independent than a report writt
 
 ```
 == ALL HELDOUT REPORTS ==
-  claims in gold                        32  (consistent 20, planted errors 6, not in workbook 6)
-  planted errors caught                 5/6 (83%)
+  claims in gold                        43  (consistent 30, planted errors 7, not in workbook 6)
+  planted errors caught                 6/7 (86%)
   wrong figures passed as consistent    0 planted errors, 0 claims with no workbook support
-  false alarms                          1 of 20 correct figures; 0 of 6 figures not in the workbook
-  correct figures confirmed             11/20 (55%)
-  correct figures left unverifiable     7
-  claims matched to the right cell(s)   15/26 (58%) of checkable claims (15/17 of those the tool attempted)
-  figures not extracted                 1
-  non-claims ignored                    21/24 (88%)
-  numbers extracted that are not in gold 0
-
-== ALL TUNING REPORTS ==
-  claims in gold                        88  (consistent 45, planted errors 10, not in workbook 33)
-  planted errors caught                 10/10 (100%)
-  wrong figures passed as consistent    0 planted errors, 0 claims with no workbook support
-  false alarms                          0 of 45 correct figures; 0 of 33 figures not in the workbook
-  correct figures confirmed             45/45 (100%)
-  correct figures left unverifiable     0
-  claims matched to the right cell(s)   55/55 (100%) of checkable claims (55/55 of those the tool attempted)
+  false alarms                          2 of 30 correct figures; 0 of 6 figures not in the workbook
+  correct figures confirmed             26/30 (87%)
+  correct figures left unverifiable     2
+  claims matched to the right cell(s)   32/37 (86%) of checkable claims (32/34 of those the tool attempted)
   figures not extracted                 0
-  non-claims ignored                    78/78 (100%)
-  numbers extracted that are not in gold 0
+  non-claims ignored                    16/17 (94%)
+  numbers extracted that are not in gold 2
 ```
 
-Read the held-out numbers, not the tuning ones: the rules were adjusted until the two tuning reports were
-clean, so 100% there says little. On the unseen report the checker caught 5 of 6 planted errors and passed
-no wrong figure as consistent. Its main weakness is coverage: 7 of 20 correct figures were left
-unverifiable, and 2 of 17 attempted figures were matched to the wrong cells (both were still flagged as
-inconsistent, one correctly). The "non-claims ignored" line hides one more false alarm: the threshold
-`80 per cent` inside "attended at least 80 per cent of sessions" was flagged as an inconsistent figure.
+The two tuning reports score 100% on every line, which says little because the rules were adjusted on
+them. Next to the first version of this project (a different, three-country scenario with only an
+indicator table; its numbers are void now that the data has changed, and are shown only for comparison):
+
+| Held-out report | First version | This version |
+|---|---|---|
+| Planted errors caught | 5 of 6 | 6 of 7 |
+| Wrong figures passed as consistent | 0 | 0 |
+| False alarms on correct figures | 1 of 20 | 2 of 30 |
+| Correct figures confirmed | 11 of 20 | 26 of 30 |
+| Matched to the right cell(s) | 15 of 26 | 32 of 37 |
+| Non-claims ignored | 21 of 24 | 16 of 17 |
+
+The 2 "numbers extracted that are not in gold" are mine, not the tool's: the held-out text says "the three
+districts" twice and I did not label those words; the tool reported both as unverifiable.
 
 ## Where it fails
 
-Real sentences from the held-out Colombia report:
+Real sentences from the held-out `WASH-2026` report:
 
-- *"Upwards of 1,050 parents and caregivers attended school committee meetings this quarter"*: the
-  planted overstated hedge (the workbook has 1,022, so "upwards of 1,050" is false) was missed.
-  `parents` is not in the unit vocabulary, so the figure was reported as counting an unknown unit.
-  Unverifiable, not wrongly consistent, but a miss.
-- *"...short of the 75 per cent benchmark agreed with the donor."*: `benchmark` is not a target word in
-  the config, so 75 was compared with the achieved rate (66%) and flagged. A false alarm.
-- *"Roughly two thirds of enrolled children attended at least 80 per cent of sessions"*: the `80 per cent`
-  is part of the indicator definition, not a result, but was extracted as a claim.
-- *"La Guajira: 1,294; Arauca: 1,007; Norte de Santander: 1,135."*: a list with no unit word anywhere in
-  the sentence. All three correct figures were left unverifiable.
-- *"The figure stood at 2,969 at the end of June"*: no unit, and the checker does not map a month to a
-  quarter. Unverifiable.
-- *"A total of 3,303 learning kits (...) were handed out, 1,110 of them in Norte de Santander."*: the total
-  was matched to the Norte de Santander row instead of the sum of all three. It was flagged (correctly,
-  the digits were swapped) but against the wrong cell.
+- *"The warehouse received 1,940 kits and dispatched 1,832, leaving a balance of 308 kits on 30
+  September."* The previous sentence says "family hygiene kits", but this one only says "kits", and the
+  project also stocks child winter clothing kits. All three figures were left unverifiable, so the planted
+  wrong balance (the workbook says 188) was missed. Unverifiable, not wrongly consistent, but a miss.
+- *"Child winter clothing kits for Hermel were dispatched as 40 boxes and 1 piece..."* "For Hermel" names
+  the district, not the destination "Hermel centre", so the checker summed every destination of that item
+  (521 pieces against 321) and raised a false alarm.
+- *"The thermal blanket balance in the same warehouse was 760 pieces..."* "The same warehouse" points two
+  sentences back, past the unverifiable sentence above. The checker added both warehouses (1,760) and
+  raised a false alarm.
+- *"Children under 18 made up the largest group with 4,869 people..."* The age limit "18" was taken as a
+  figure (reported as unverifiable).
 
 ## What I would add next
 
-- Read numbers inside Word tables, not only paragraphs.
-- Take unit words from the workbook itself (an indicator named "Parents and caregivers..." with unit
-  "People" should teach the checker that `parents` counts people), and map months to quarters.
-- A Word add-in or SharePoint flow that runs the check when a report is saved.
-- An LLM could propose the indicator match for figures the rules leave unverifiable, shown to the
-  reviewer as a suggestion; the rules would still decide what counts as consistent.
+- Follow "the same warehouse" and "these kits" across more than one sentence, and read a district name
+  as its centre when the dispatch sheet has exactly one centre in that district.
+- Read the stock card (every receipt and waybill) instead of quarterly totals, to check figures by date
+  and by expiry.
+- Run the check from a Google Sheets menu or an n8n job when a report is saved, and post the review page
+  link to the team.
+- An LLM could suggest the match for figures the rules leave unverifiable, shown as a suggestion; the
+  rules would still decide what counts as consistent.
 
 ## Layout
 
 ```
-numcheck/            the checker: numbers.py (extract), matcher.py (interpret), checks.py (compare),
-                     workbook.py, narrative.py, render.py + static/review.html (page), cli.py, app.py
+numcheck/            numbers.py (extract), matcher.py (indicator figures), stock.py (dispatch and stock
+                     figures), checks.py (look up and compare), workbook.py, narrative.py (incl. tables),
+                     render.py + static/review.html (page), cli.py, app.py
 numcheck/config/     matching.toml: vocabulary, tolerances, weak-match thresholds
-scripts/             generate_data.py, datagen/ (report templates), benchmark.py
+scripts/             generate_data.py, datagen/ (engine and the three report templates), benchmark.py
 data/                three synthetic reports: report.docx, report.md, indicators.xlsx, gold.json
-tests/               pytest: number forms, hedges, non-claims, derived checks, weak-match rule, CLI, app
+tests/               pytest: number forms, hedges, non-claims, derived checks, weak-match rule,
+                     boxes and pieces, stock arithmetic, households vs people, Word tables, CLI, app
 ```
 
 Run the tests with `pip install -e ".[dev]"` then `pytest`.

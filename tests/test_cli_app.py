@@ -21,7 +21,7 @@ def test_cli_exit_code_1_when_inconsistent(tmp_path, capsys):
 
 def test_cli_exit_code_0_when_clean(tmp_path, basic_wb):
     md = tmp_path / "ok.md"
-    md.write_text("# Report\n\nNorthbridge Relief delivered cash assistance to 1,950 households.\n", encoding="utf-8")
+    md.write_text("# Report\n\nThe Organization delivered food parcels to 1,950 households.\n", encoding="utf-8")
     assert main(["check", str(md), str(basic_wb), "-q"]) == 0
 
 
