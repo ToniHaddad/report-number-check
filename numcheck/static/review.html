@@ -79,6 +79,11 @@ button { font: inherit; color: inherit; }
 .doc h2 { font: 650 13px/1.3 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 30px 0 8px; }
 .doc h3 { font: 600 16px/1.35 var(--sans); margin: 22px 0 6px; }
 .doc p { margin: 0 0 14px; max-width: 70ch; }
+.doc-table-wrap { overflow-x: auto; margin: 4px 0 18px; }
+.doc-table { border-collapse: collapse; font: 14.5px/1.45 var(--sans); min-width: 60%; }
+.doc-table th, .doc-table td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+.doc-table th { background: var(--raised); font-weight: 650; font-size: 13px; color: var(--muted); }
+.doc-table td { font-variant-numeric: tabular-nums lining-nums; }
 .claim { all: unset; cursor: pointer; border-radius: 4px; padding: 0 3px; margin: 0 -1px; background: var(--b); box-shadow: inset 0 -2px 0 var(--c);
   transition: opacity .15s, background .15s; -webkit-tap-highlight-color: transparent; }
 .claim:hover { box-shadow: inset 0 -3px 0 var(--c); }
@@ -227,19 +232,32 @@ details.upload summary::-webkit-details-marker { display: none; }
     if (!c.rows || !c.rows.length) return "";
     var used = {};
     c.cells.forEach(function (x) { used[x.col + x.row] = x.role; });
-    var cols = data.columns;
-    var h = '<div class="grid-wrap"><table class="grid"><thead><tr><th></th>';
-    cols.forEach(function (L) { h += "<th>" + L + "</th>"; });
-    h += '</tr></thead><tbody><tr class="hdr"><th class="rn">' + data.header_row + "</th>";
-    data.headers.forEach(function (t) { h += "<td>" + esc(t) + "</td>"; });
-    h += "</tr>";
+    var sh = data.sheets[c.sheet];
+    if (!sh) return "";
     var shown = c.rows.slice(0, 14);
+    // Columns with the same value in every matched row become one caption line,
+    // so the value columns fit in the panel.
+    var keep = [], same = [];
+    sh.columns.forEach(function (L, k) {
+      var vals = shown.map(function (r) { var v = (sh.rows[r] || [])[sh.col_index[k]]; return v == null ? "" : String(v); });
+      var usedHere = shown.some(function (r) { return used[L + r]; });
+      if (!usedHere && shown.length > 1 && vals.every(function (v) { return v === vals[0]; })) {
+        if (vals[0]) same.push(esc(sh.headers[k]) + " <b>" + esc(vals[0]) + "</b>");
+      } else { keep.push(k); }
+    });
+    var h = same.length ? '<p class="legend-cells">Every row: ' + same.join(", ") + "</p>" : "";
+    h += '<div class="grid-wrap"><table class="grid"><thead><tr><th></th>';
+    keep.forEach(function (k) { h += "<th>" + sh.columns[k] + "</th>"; });
+    h += '</tr></thead><tbody><tr class="hdr"><th class="rn">' + sh.header_row + "</th>";
+    keep.forEach(function (k) { h += "<td>" + esc(sh.headers[k]) + "</td>"; });
+    h += "</tr>";
     shown.forEach(function (r) {
-      var vals = data.rows[r] || [];
+      var vals = sh.rows[r] || [];
       h += '<tr><th class="rn">' + r + "</th>";
-      cols.forEach(function (L, k) {
+      keep.forEach(function (k) {
+        var L = sh.columns[k];
         var role = used[L + r];
-        var v = vals[data.col_index[k]];
+        var v = vals[sh.col_index[k]];
         if (v == null) v = "";
         var cls = [];
         if (role) cls.push("used-" + role);
@@ -251,7 +269,7 @@ details.upload summary::-webkit-details-marker { display: none; }
     });
     h += "</tbody></table></div>";
     if (c.rows.length > shown.length) h += '<p class="legend-cells">' + (c.rows.length - shown.length) + " more rows not shown.</p>";
-    h += '<p class="legend-cells">Sheet "' + esc(data.sheet) + '". Solid outline: achieved value used. Dashed outline: target used. Indicator ID, name and unit columns are left out here.</p>';
+    h += '<p class="legend-cells">Sheet "' + esc(c.sheet) + '". Outlined: the cells used' + (c.sheet === Object.keys(data.sheets)[0] ? " (dashed: target)" : "") + '. Some columns are left out here.</p>';
     return h;
   }
 
@@ -276,6 +294,15 @@ details.upload summary::-webkit-details-marker { display: none; }
       (c.notes || []).forEach(function (n) { h += '<div class="callout note">' + esc(n) + "</div>"; });
     }
     var it = c.interp || {};
+    if (it.item) {
+      h += "<h3>Read as</h3><dl class=\"cmp\">";
+      h += "<dt>Item</dt><dd>" + esc(it.item) + '<span class="how">' + esc(it.via) + "</span></dd>";
+      h += "<dt>Measure</dt><dd>" + esc(it.measure) + "</dd>";
+      if (it.destination) h += "<dt>Destination</dt><dd>" + esc(it.destination) + "</dd>";
+      h += "<dt>Warehouse</dt><dd>" + esc(it.warehouse) + '<span class="how">' + esc(it.warehouse_how) + "</span></dd>";
+      h += "<dt>Period</dt><dd>" + esc(it.period) + '<span class="how">' + esc(it.period_how) + "</span></dd>";
+      h += "</dl>";
+    }
     if (it.indicator) {
       h += "<h3>Read as</h3><dl class=\"cmp\">";
       h += "<dt>Indicator</dt><dd>" + esc(it.indicator) + '<span class="how">' + esc(it.via) + "</span></dd>";
@@ -283,6 +310,7 @@ details.upload summary::-webkit-details-marker { display: none; }
       h += "<dt>Location</dt><dd>" + esc(it.location) + '<span class="how">' + esc(it.location_how) + "</span></dd>";
       h += "<dt>Period</dt><dd>" + esc(it.period) + '<span class="how">' + esc(it.period_how) + "</span></dd>";
       if (it.sex) h += "<dt>Sex</dt><dd>" + esc(it.sex) + "</dd>";
+      if (it.age) h += "<dt>Age group</dt><dd>" + esc(it.age) + "</dd>";
       h += "</dl>";
     }
     if (c.rows && c.rows.length) h += "<h3>Matched cells</h3>" + cellTable(c);

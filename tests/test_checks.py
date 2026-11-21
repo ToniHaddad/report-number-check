@@ -206,7 +206,7 @@ def test_tuning_reports_pass_no_wrong_figure_as_consistent():
     root = Path(__file__).resolve().parent.parent
     sys.path.insert(0, str(root / "scripts"))
     from benchmark import evaluate
-    for name in ("lebanon-cash-q3-2026", "kenya-wash-q3-2026"):
+    for name in ("fa-2026-q3", "ea-2026-q3"):
         m = evaluate(root / "data" / name, verbose=False)
         assert m["planted_passed_consistent"] == 0
         assert m["unsupported_passed_consistent"] == 0

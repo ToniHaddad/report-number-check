@@ -6,7 +6,7 @@ from numcheck.app import app
 from numcheck.cli import main
 
 ROOT = Path(__file__).resolve().parent.parent
-SAMPLE = ROOT / "data" / "lebanon-cash-q3-2026"
+SAMPLE = ROOT / "data" / "fa-2026-q3"
 
 
 def test_cli_exit_code_1_when_inconsistent(tmp_path, capsys):
@@ -38,8 +38,8 @@ def test_app_serves_sample_and_upload():
     with open(SAMPLE / "report.docx", "rb") as n, open(SAMPLE / "indicators.xlsx", "rb") as w:
         r = client.post("/check", files={"narrative": ("report.docx", n), "workbook": ("indicators.xlsx", w)})
     assert r.status_code == 200 and 'class="claim s-inconsistent"' in r.text
-    r = client.get("/api/sample/lebanon-cash-q3-2026")
-    assert r.json()["counts"]["inconsistent"] == 5
+    r = client.get("/api/sample/fa-2026-q3")
+    assert r.json()["counts"]["inconsistent"] == 7
 
 
 def test_markdown_narrative_reads_like_docx():

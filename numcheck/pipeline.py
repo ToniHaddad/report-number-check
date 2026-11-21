@@ -39,6 +39,7 @@ def check(narrative: str | Path, workbook: str | Path, config: str | None = None
     for block in blocks:
         results.extend(_check_block(block, wb, cfg, matcher))
     _derived_checks(results)
+    _stock_arithmetic(results, wb)
     return Report(str(narrative), str(workbook), blocks, wb, results)
 
 
@@ -146,3 +147,46 @@ def _apply_sum(total: Result, parts: list[Result], label: str) -> None:
             r.reason = ""
             r.calculation = msg
 
+
+
+def _stock_arithmetic(results: list[Result], wb: Workbook) -> None:
+    """Stock arithmetic inside the text: opening + received - dispatched = the balance stated."""
+    by_block: dict[int, list[Result]] = {}
+    for r in results:
+        it = r.interp
+        if it.source in ("dispatch", "stock") and it.item is not None and r.claim.hedge is None                 and r.claim.extra_pieces is None and it.unit != "boxes":
+            by_block.setdefault(r.claim.block, []).append(r)
+    for rs in by_block.values():
+        for bal in [r for r in rs if r.interp.measure == "closing"]:
+            key = (bal.interp.item.code, tuple(bal.interp.warehouses or []), tuple(bal.interp.periods))
+            near = [r for r in rs if r is not bal and abs(r.sentence_index - bal.sentence_index) <= 1
+                    and (r.interp.item.code, tuple(r.interp.warehouses or []), tuple(r.interp.periods)) == key]
+            got = {}
+            for r in near:
+                m = "received" if r.interp.measure.startswith("received") else r.interp.measure
+                if m in ("opening", "received", "dispatched") and m not in got:
+                    got[m] = r
+            if "received" not in got or "dispatched" not in got:
+                continue
+            if "opening" in got:
+                opening, o_label = got["opening"].claim.value, f"opening {fmt_num(got['opening'].claim.value)}"
+            else:
+                from .checks import lookup_stock
+                import copy as _copy
+                tmp = _copy.copy(bal.interp)
+                tmp.source, tmp.measure = "stock", "opening"
+                lk = lookup_stock(wb, tmp)
+                if lk.value is None:
+                    continue
+                opening, o_label = lk.value, f"opening {fmt_num(lk.value)} (from the workbook)"
+            rec, dsp = got["received"].claim.value, got["dispatched"].claim.value
+            expect = opening + rec - dsp
+            calc = f"{o_label} + received {fmt_num(rec)} - dispatched {fmt_num(dsp)} = {fmt_num(expect)}"
+            if abs(expect - bal.claim.value) < 0.5:
+                bal.notes.append(f"Stock arithmetic in the text: {calc}, as stated.")
+            else:
+                msg = (f"Stock arithmetic in the text: {calc}, but the stated balance is "
+                       f"{fmt_num(bal.claim.value)}.")
+                for r in [bal] + list(got.values()):
+                    if msg not in r.notes:
+                        r.notes.append(msg)

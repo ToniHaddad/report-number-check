@@ -26,10 +26,17 @@ def _summary(rep) -> str:
             else fmt_num(r.expected) if r.expected is not None else "-"
         lines.append(f"INCONSISTENT  {cl.text!r}  workbook: {exp}")
         lines.append(f"    sentence: {sent}")
+        it = r.interp
+        if it.source in ("dispatch", "stock") and it.item is not None:
+            where = [f"destination {it.destinations[0]}"] if it.destinations else []
+            where += [f"warehouse {it.warehouses[0]}"] if it.warehouses else ["all warehouses"]
+            when = it.months[0].title() if it.months else ", ".join(it.periods)
+            lines.append(f"    read as:  {it.source} sheet, {it.item.name} ({it.item.code}), {it.measure}, "
+                         f"{', '.join(where)}, {when}, in {it.unit}")
         if r.interp.indicator:
             loc = "all locations" if r.interp.locations is None else ", ".join(r.interp.locations)
             lines.append(f"    read as:  {r.interp.indicator.id} {r.interp.measure}, {loc}, {', '.join(r.interp.periods)}"
-                         + (f", {r.interp.sex}" if r.interp.sex else ""))
+                         + (f", {r.interp.sex}" if r.interp.sex else "") + (f", {r.interp.age}" if r.interp.age else ""))
         if r.calculation:
             lines.append(f"    calc:     {r.calculation}")
         for h in r.hints:
@@ -49,7 +56,9 @@ def _json(rep) -> dict:
             "hedge": r.claim.hedge, "expected": r.expected, "calculation": r.calculation, "reason": r.reason,
             "cells": [c["ref"] for c in r.cells], "hints": r.hints, "notes": r.notes,
             "indicator": it.indicator.id if it.indicator else None, "measure": it.measure,
-            "locations": it.locations, "periods": it.periods, "sex": it.sex,
+            "locations": it.locations, "periods": it.periods, "sex": it.sex, "age": it.age,
+            "source": it.source, "item": it.item.code if it.item else None, "unit": it.unit,
+            "warehouses": it.warehouses, "destinations": it.destinations, "months": it.months,
         })
     return {"counts": rep.counts, "claims": out}
 

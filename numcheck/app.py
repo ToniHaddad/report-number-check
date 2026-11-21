@@ -17,7 +17,7 @@ from .pipeline import check
 from .render import render_html
 
 DATA = Path(__file__).resolve().parent.parent / "data"
-DEFAULT_SAMPLE = "lebanon-cash-q3-2026"
+DEFAULT_SAMPLE = "fa-2026-q3"
 
 app = FastAPI(title="numcheck", docs_url=None, redoc_url=None)
 
