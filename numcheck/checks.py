@@ -72,6 +72,13 @@ def select_rows(wb: Workbook, it: Interpretation, sex: str | None, periods=None,
     else:
         alls = [r for r in rows if r.sex == "all"]
         rows = alls if alls else rows
+    if it.age:
+        rows = [r for r in rows if r.age == it.age]
+        if not rows:
+            return [], f"no rows for age group {it.age} in {ind.id}"
+    else:
+        alls = [r for r in rows if r.age == "all"]
+        rows = alls if alls else rows
     return rows, None
 
 
@@ -150,6 +157,56 @@ def lookup(wb: Workbook, it: Interpretation, periods=None, locations="same", tar
     return Lookup(None, [], [], "", f"unknown measure {m}")
 
 
+STOCK_FIELDS = {"opening": ["opening"], "closing": ["closing"], "dispatched": ["dispatched"],
+                "received_inkind": ["received_inkind"], "received_purchase": ["received_purchase"]}
+
+
+def lookup_stock(wb: Workbook, it: Interpretation, periods=None, unit=None, measure=None) -> Lookup:
+    """Sum the matching rows of the dispatch summary or the stock sheet, in pieces (or boxes)."""
+    periods = periods or it.periods
+    unit = unit or it.unit
+    measure = measure or it.measure
+    item = it.item
+    if it.source == "dispatch":
+        sheet, fields = wb.dispatch, ["pieces"]
+        rows = [r for r in sheet.rows if (r.fields.get("item_code") or r.fields.get("item")) == item.code
+                and r.fields.get("period") in periods
+                and (not it.warehouses or r.fields.get("warehouse") in it.warehouses)
+                and (not it.destinations or r.fields.get("destination") in it.destinations)
+                and (not it.months or any(r.fields.get("month", "").lower().startswith(m[:3]) for m in it.months))]
+    else:
+        sheet = wb.stock
+        if measure in ("opening", "closing") and len(periods) > 1:
+            return Lookup(None, [], [], "", "an opening or closing balance cannot be added up across periods")
+        if measure == "received":
+            fields = [f for f in ("received_purchase", "received_inkind") if sheet.columns.get(f)] or ["received"]
+        else:
+            fields = STOCK_FIELDS.get(measure, [measure])
+        if not all(f in sheet.columns for f in fields):
+            return Lookup(None, [], [], "", f"the stock sheet has no column for {measure}")
+        rows = [r for r in sheet.rows if (r.fields.get("item_code") or r.fields.get("item")) == item.code
+                and r.fields.get("period") in periods
+                and (not it.warehouses or r.fields.get("warehouse") in it.warehouses)]
+    if not rows:
+        return Lookup(None, [], [], "", f"no {sheet.name} rows for {item.name} with these filters")
+    cells = []
+    for f in fields:
+        for r in rows:
+            c = r.cells[f]
+            cells.append({"ref": c.ref, "column": c.column, "row": c.row, "value": c.value, "role": "achieved",
+                          "sheet": sheet.name})
+    if any(c["value"] is None for c in cells):
+        return Lookup(None, cells, [r.excel_row for r in rows], "", "an empty cell")
+    pieces = sum(c["value"] for c in cells)
+    expr = _sum_expr(cells)
+    calc = f"{expr} = {fmt_num(pieces)} pieces" if len(cells) > 1 else f"{expr} = {fmt_num(pieces)} pieces"
+    value = pieces
+    if unit == "boxes":
+        value = pieces / item.ppb
+        calc += f" / {item.ppb} per box = {fmt_num(round(value, 2))} boxes"
+    return Lookup(value, cells, [r.excel_row for r in rows], calc)
+
+
 def within(claim: Claim, actual: float, cfg: Config) -> tuple[bool, str]:
     """Is the workbook value consistent with the claim as written (rounding and hedge)?"""
     v = claim.value
@@ -168,6 +225,8 @@ def within(claim: Claim, actual: float, cfg: Config) -> tuple[bool, str]:
         if h in ("under",) and actual >= v:
             ok = False
         return ok, f"'{claim.text}' allows {lo:.1f}% to {hi:.1f}%"
+    if claim.extra_pieces is not None:
+        return abs(actual - v) < 1e-6, "boxes and pieces: must match the workbook exactly"
     if claim.hedge is None:
         lo, hi = v - claim.precision, v + claim.precision
         ok = lo - 1e-9 <= actual <= hi + 1e-9
@@ -192,8 +251,19 @@ def hints_for(result: Result, wb: Workbook, cfg: Config) -> list[str]:
     """Explain a mismatch: is the stated figure found elsewhere in the workbook?"""
     c, it = result.claim, result.interp
     out = []
+    if it.source in ("dispatch", "stock"):
+        return stock_hints(result, wb, cfg)
     if it.indicator is None:
         return out
+    if it.measure == "achieved" and it.indicator.unit in cfg.person_units:
+        for other in wb.indicators.values():
+            if other.unit != "households" or other.id == it.indicator.id:
+                continue
+            tmp = Interpretation(**{**it.__dict__, "indicator": other, "sex": None, "age": None})
+            lk = lookup(wb, tmp)
+            if lk.value is not None and within(c, lk.value, cfg)[0]:
+                out.append(f"The stated figure is the number of households ({other.id}: {lk.calculation}), "
+                           f"not people. Households and individuals mixed up?")
 
     def matches(v):
         return v is not None and within(c, v, cfg)[0]
@@ -246,4 +316,32 @@ def hints_for(result: Result, wb: Workbook, cfg: Config) -> list[str]:
         if c.hedge in ("nearly",) and result.expected > c.value:
             out.append(f"'{c.hedge_text}' means a little below, but the workbook value "
                        f"{fmt_num(result.expected)} is above {fmt_num(c.value)}.")
+    return out
+
+
+def stock_hints(result: Result, wb: Workbook, cfg: Config) -> list[str]:
+    c, it = result.claim, result.interp
+    out = []
+    stated = c.value * it.item.ppb + c.extra_pieces if c.extra_pieces is not None else c.value
+    if it.unit == "boxes" and c.extra_pieces is None:
+        lk = lookup_stock(wb, it, unit="pieces")
+        if lk.value is not None and abs(lk.value - c.value) < 0.5:
+            out.append(f"The stated figure is the number of pieces ({fmt_num(lk.value)}). In boxes of "
+                       f"{it.item.ppb} it is {fmt_num(round(lk.value / it.item.ppb, 2))}. Pieces written as boxes?")
+    if it.unit == "pieces":
+        lk = lookup_stock(wb, it, unit="boxes")
+        if lk.value is not None and abs(lk.value - stated) < 0.5:
+            out.append(f"The stated figure is the number of boxes ({fmt_num(lk.value)} boxes of {it.item.ppb}). "
+                       f"In pieces it is {fmt_num(lk.value * it.item.ppb)}. Boxes written as pieces?")
+    for p in wb.periods:
+        if p in it.periods:
+            continue
+        lk = lookup_stock(wb, it, periods=[p])
+        if lk.value is not None and abs(lk.value - stated) < 0.5:
+            out.append(f"The stated figure is the {p} value ({lk.calculation}). Left over from an earlier report?")
+    if result.expected is not None and c.extra_pieces is None and not c.spelled:
+        exp, got = f"{round(result.expected)}", f"{round(c.value)}"
+        if len(exp) == len(got) and sorted(exp) == sorted(got) and exp != got:
+            out.append(f"Two digits look swapped: the workbook says {fmt_num(result.expected)}, "
+                       f"the report says {fmt_num(c.value)}.")
     return out

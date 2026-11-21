@@ -5,7 +5,7 @@ import copy
 from dataclasses import dataclass
 from pathlib import Path
 
-from .checks import Result, fmt_num, hints_for, lookup, within
+from .checks import Result, fmt_num, hints_for, lookup, lookup_stock, within
 from .config import Config, load_config
 from .matcher import Context, Interpretation, Matcher
 from .narrative import Block, read_narrative
@@ -47,21 +47,24 @@ def _check_block(block: Block, wb: Workbook, cfg: Config, matcher: Matcher) -> l
     claims = extract_claims(text, block.index, cfg, is_heading=block.kind == "heading")
     if not claims:
         return []
-    sents = sentences(text) or [(0, len(text))]
+    is_row = block.kind == "row"
+    sents = [(0, len(text))] if is_row else (sentences(text) or [(0, len(text))])
     out, resolved = [], {}
     prev_text, prev_claims = "", []
     for si, (ss, se) in enumerate(sents):
         last = si == len(sents) - 1
         sc = [c for c in claims if ss <= c.num_start < (se if not last else len(text) + 1)]
-        cl = clauses(text, ss, se)
+        cl = list(block.cells) if is_row else clauses(text, ss, se)
+        if is_row:   # a cell's clause starts at its header: "Pieces dispatched: 1,832"
+            cl = [(text.rfind("|", 0, a) + 1 if text.rfind("|", 0, a) >= 0 else 0, b) for a, b in cl]
         for c in sc:
             c.sentence = (ss, se)
             c.clause = next(((a, b) for a, b in cl if a <= c.num_start < b), (ss, se))
         for c in sc:
             ctx = Context(claim=c, block_text=text, sentence=text[ss:se], sentence_start=ss,
                           clause=text[c.clause[0]:c.clause[1]], clause_start=c.clause[0],
-                          prev_sentence=prev_text, heading=block.heading if block.kind == "paragraph" else "",
-                          sentence_claims=sc)
+                          prev_sentence=prev_text, heading=block.heading if block.kind in ("paragraph", "row") else "",
+                          sentence_claims=sc, is_row=is_row)
             it = matcher.interpret(ctx, resolved, prev_claims)
             resolved[c.id] = it
             out.append(evaluate(c, it, wb, cfg))
@@ -73,10 +76,21 @@ def _check_block(block: Block, wb: Workbook, cfg: Config, matcher: Matcher) -> l
 def evaluate(c: Claim, it: Interpretation, wb: Workbook, cfg: Config) -> Result:
     if it.unverifiable:
         return Result(c, it, "unverifiable", reason=it.unverifiable)
-    lk = lookup(wb, it)
+    lk = lookup_stock(wb, it) if it.source in ("dispatch", "stock") else lookup(wb, it)
     if lk.problem or lk.value is None:
         return Result(c, it, "unverifiable", reason=lk.problem or "no value", cells=lk.cells, rows=lk.rows)
-    ok, tol = within(c, lk.value, cfg)
+    if c.extra_pieces is not None:      # "12 boxes and 6 pieces": compare in pieces
+        if it.unit == "boxes":
+            lk = lookup_stock(wb, it, unit="pieces")
+        stated = c.value * it.item.ppb + c.extra_pieces if it.item else c.value
+        ok = abs(stated - lk.value) < 1e-6
+        tol = f"{fmt_num(c.value)} boxes x {it.item.ppb} + {c.extra_pieces} = {fmt_num(stated)} pieces" if it.item else ""
+    elif it.source in ("dispatch", "stock") and it.unit == "boxes":
+        ok = abs(c.value - lk.value) < 1 - 1e-9 if c.hedge is None else within(c, lk.value, cfg)[0]
+        tol = "whole boxes: within one box of the pieces divided by pieces per box" if c.hedge is None else \
+            within(c, lk.value, cfg)[1]
+    else:
+        ok, tol = within(c, lk.value, cfg)
     r = Result(c, it, "consistent" if ok else "inconsistent", expected=lk.value, calculation=lk.calculation,
                tolerance=tol, cells=lk.cells, rows=lk.rows)
     if not ok:

@@ -74,6 +74,7 @@ class Claim:
     hedge_text: str | None = None
     currency: str | None = None
     spelled: bool = False
+    extra_pieces: int | None = None   # "12 boxes and 6 pieces": value 12 (boxes), extra_pieces 6
     sentence: tuple[int, int] = (0, 0)
     clause: tuple[int, int] = (0, 0)
     notes: list[str] = field(default_factory=list)
@@ -224,6 +225,13 @@ def extract_claims(text: str, block: int, cfg: Config, is_heading: bool = False)
         rest = text[e:e + 20]
         pm = re.match(r"\s*(%|percent\b|per\s+cent\b|pc\b)", rest, re.I)
         sm = re.match(r"\s*(thousand|million|billion)\b", rest, re.I)
+        bm = re.match(r"\s+(?:boxes|box|bales|bale|cartons|carton)\s+(?:and|\+|plus)\s+(\d[\d,]*)\s+(?:pieces|piece|pcs)(?![a-z])",
+                      text[e:e + 60], re.I)
+        extra = None
+        if bm:
+            extra = int(bm.group(1).replace(",", ""))
+            end = e + bm.end()
+            taken.append((e, end))
         if pm:
             kind, end = "percent", e + pm.end()
         elif sm:
@@ -239,7 +247,7 @@ def extract_claims(text: str, block: int, cfg: Config, is_heading: bool = False)
             start = s - (len(text[max(0, s - 6):s]) - cm.start())
         hedge, htext, hstart = _hedge(text, start, cfg)
         out.append(Claim("", block, hstart, end, s, e, text[hstart:end], value, kind, precision, hedge, htext,
-                         currency))
+                         currency, extra_pieces=extra))
         taken.append((s, end))
 
     # 3. spelled numbers ("twelve surveys", "forty-two staff")

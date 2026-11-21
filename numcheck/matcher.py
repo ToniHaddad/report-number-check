@@ -41,6 +41,12 @@ class Interpretation:
     keyword_hits: list[str] = field(default_factory=list)
     via: str = ""                       # how the indicator was chosen
     unverifiable: str | None = None     # reason, when no safe match exists
+    age: str | None = None              # children | adults | older | None (all ages)
+    source: str = "indicators"          # indicators | dispatch | stock
+    item: object = None                 # workbook.Item, for dispatch and stock claims
+    warehouses: list[str] | None = None
+    destinations: list[str] | None = None
+    months: list[str] | None = None
 
 
 @dataclass
@@ -55,6 +61,7 @@ class Context:
     prev_sentence: str
     heading: str
     sentence_claims: list[Claim]        # claims in the same sentence, in order
+    is_row: bool = False                # the "sentence" is a table row, the "clause" one cell
 
 
 class Matcher:
@@ -87,6 +94,10 @@ class Matcher:
             self.loc_aliases[loc] = sorted(aliases, key=len, reverse=True)
         self.prev_period = wb.previous_period
         self.cur_period = wb.current_period
+        from .stock import StockMatcher
+        self.stock = StockMatcher(wb, cfg)
+        self._row = False
+        self.age_units = {i.unit for i in wb.indicators.values()}
 
     # ------------------------------------------------------------ helpers
 
@@ -193,6 +204,20 @@ class Matcher:
             return found, False
         return None, unknown and c.kind == "count"
 
+    def detect_age(self, ctx: Context) -> str | None:
+        c = ctx.claim
+        clause_end = ctx.clause_start + len(ctx.clause)
+        after = ctx.block_text[c.end:min(clause_end, c.end + 40)].lower()
+        before = ctx.block_text[max(ctx.clause_start, c.start - 50):c.start].lower()
+        phrases = sorted(self.cfg.age_words, key=len, reverse=True)
+        for ph in phrases:
+            if re.match(r"\s*(?:(?:were|are|of them|of whom|was)\s+)?" + re.escape(ph) + r"\b", after):
+                return self.cfg.age_words[ph]
+        for ph in phrases:
+            if re.search(r"\b" + re.escape(ph) + r"\b", before):
+                return self.cfg.age_words[ph]
+        return None
+
     def detect_sex(self, ctx: Context) -> str | None:
         c = ctx.claim
         after = self.clause_tokens_after(ctx, 6)
@@ -247,6 +272,13 @@ class Matcher:
         mentions = self.location_mentions(ctx.sentence, ctx.sentence_start)
         clause_end = ctx.clause_start + len(ctx.clause)
         low_clause = ctx.clause.lower()
+        if ctx.is_row:
+            locs = sorted({m[2] for m in mentions})
+            if len(locs) == 1:
+                interp.locations, interp.location_how = locs, "named in the table row"
+            elif len(locs) > 1:
+                interp.unverifiable = "location unclear: the table row names several"
+            return
         if self._says_all_locations(low_clause):
             interp.locations, interp.location_how = None, "all locations (stated)"
             return
@@ -331,6 +363,12 @@ class Matcher:
         for ph in self.cfg.period_previous:
             if contains_phrase(low, ph) and self.prev_period:
                 return [self.prev_period], f"'{ph}' points to {self.prev_period}"
+        months = [m for m in MONTHS if re.search(r"\b" + m + r"\b", low)]
+        if len(months) == 1:
+            q = MONTHS.index(months[0]) // 3 + 1
+            hits = [p for p in self.wb.periods if re.search(rf"q{q}\b", p.lower())]
+            if len(hits) == 1:
+                return hits, f"'{months[0].title()}' falls in {hits[0]}"
         return None
 
     def resolve_period(self, ctx: Context, interp: Interpretation, inherited: list[str] | None) -> None:
@@ -358,11 +396,14 @@ class Matcher:
                   prev_sentence_claims: list[Claim]) -> Interpretation:
         c = ctx.claim
         it = Interpretation()
+        self._row = ctx.is_row
         low_clause = ctx.clause.lower()
         for cue in self.cfg.cues_future:
             if contains_phrase(low_clause, cue):
                 it.unverifiable = f"describes a plan ('{cue}'), not a result"
                 return it
+        if self.stock.interpret(ctx, it, resolved, prev_sentence_claims):
+            return it
         for cue in self.cfg.cues_subset:
             if contains_phrase(low_clause, cue):
                 it.unverifiable = f"describes a subset or rate the workbook does not record ('{cue}')"
@@ -370,7 +411,15 @@ class Matcher:
 
         unit, unknown_noun = self.detect_unit(ctx)
         sex = self.detect_sex(ctx)
-        it.unit, it.sex = unit, sex
+        age = self.detect_age(ctx)
+        if age and (unit is None or (unit == "children" and "children" not in self.age_units)):
+            # "1,189 children" where children is an age group of a people indicator
+            unit = "people" if any(i.has_age for i in self.wb.indicators.values()) else unit
+        elif age and unit == "children":
+            age = None   # the workbook counts children as their own unit
+        if age == "older" and unit is None:
+            unit = "people"
+        it.unit, it.sex, it.age = unit, sex, age
         earlier = [resolved[o.id] for o in ctx.sentence_claims if o.num_start < c.num_start
                    and o.id in resolved and resolved[o.id].indicator is not None]
         earlier_achieved = [e for e in earlier if e.measure == "achieved"]
@@ -431,7 +480,7 @@ class Matcher:
             if unknown_noun:
                 it.unverifiable = "counts something the workbook has no unit for"
                 return it
-            if unit is None and sex is None:
+            if unit is None and sex is None and age is None:
                 if antecedent and not antecedent.indicator.rate:
                     self._inherit(it, antecedent, keep_measure=False)
                     inherited = True
@@ -446,7 +495,16 @@ class Matcher:
                         it.unverifiable = "no unit next to the number and nothing earlier in the sentence to refer to"
                         return it
             if not inherited:
-                if unit is None and sex:
+                if unit is None and age and not sex:
+                    if antecedent and antecedent.indicator.has_age:
+                        self._inherit(it, antecedent, keep_measure=False)
+                        it.age = age
+                        inherited = True
+                    else:
+                        cands = [i for i in inds if i.has_age and not i.rate]
+                        if not self.pick(cands, ctx, it, "counts people by age"):
+                            return it
+                elif unit is None and sex:
                     if antecedent and not antecedent.indicator.has_sex:
                         it.unverifiable = (f"refers to {antecedent.indicator.id}, which is not broken down "
                                            f"by sex in the workbook")
@@ -484,6 +542,9 @@ class Matcher:
         if it.sex and not it.indicator.has_sex:
             it.unverifiable = f"{it.indicator.id} is not broken down by sex in the workbook"
             return it
+        if it.age and not it.indicator.has_age:
+            it.unverifiable = f"{it.indicator.id} is not broken down by age in the workbook"
+            return it
         ante_locs = antecedent.locations if (inherited and antecedent) else None
         ante_periods = antecedent.periods if (inherited and antecedent) else None
         self.resolve_location(ctx, it, ante_locs, inherited)
@@ -494,7 +555,10 @@ class Matcher:
 
     def _inherit(self, it: Interpretation, ante: Interpretation, keep_measure: bool = True) -> None:
         it.indicator = ante.indicator
+        if self._row:
+            return   # in a table each cell has its own sex and age column
         it.sex = ante.sex
+        it.age = ante.age
         it.unit = ante.unit
         it.score = ante.score
         it.keyword_hits = ante.keyword_hits

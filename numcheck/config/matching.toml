@@ -20,6 +20,11 @@ kits = ["kit", "kits"]
 schools = ["school", "schools"]
 classrooms = ["classroom", "classrooms", "learning space", "learning spaces"]
 meals = ["meal", "meals"]
+parcels = ["parcel", "parcels"]
+partners = ["partner", "partners", "partner organization", "partner organizations", "partner organisations"]
+sessions = ["session", "sessions"]
+pieces = ["piece", "pieces", "pcs", "bag", "bags", "bottle", "bottles", "pack", "packs"]
+boxes = ["box", "boxes", "bale", "bales", "carton", "cartons"]
 percent = ["%", "percent", "per cent"]
 
 # Units that count people. A bare "women" or "girls" next to a number can
@@ -31,6 +36,27 @@ person_units = ["people", "children", "teachers"]
 [sex]
 female = ["women", "woman", "female", "females", "girl", "girls"]
 male = ["men", "man", "male", "males", "boy", "boys"]
+
+# Age words. When the workbook has an age group column, these pick the rows.
+[age]
+children = ["children", "child", "minors", "under 18"]
+adults = ["adults", "adult"]
+older = ["older people", "older persons", "older person", "elderly", "older"]
+
+# Stock and dispatch figures: words that send a claim to the dispatch summary and stock
+# sheets, and words that pick the measure.
+[stock]
+signal = ["dispatched", "dispatch", "dispatches", "sent", "sent out", "waybill", "waybills", "warehouse",
+          "warehouses", "in stock", "stock", "balance", "donated", "in kind", "in-kind", "goods received note"]
+dispatch = ["dispatched", "dispatch", "dispatches", "sent", "sent out", "left", "took", "collected",
+            "delivered", "went to", "handed to", "supplied"]
+opening = ["opened", "opening", "carried over", "brought forward"]
+closing = ["balance", "in stock", "leaving", "remaining", "held", "closed the quarter", "left in stock"]
+received = ["received", "receipts", "donated", "donation", "gave", "in kind", "in-kind", "purchased", "bought"]
+inkind = ["in kind", "in-kind", "donated", "donation", "donor", "gave"]
+purchase = ["purchased", "bought", "purchase order", "procured"]
+packaging = ["boxes of", "box of", "bales of", "bale of", "cartons of", "carton of", "pieces of", "bags of",
+             "bottles of", "packs of", "units of"]
 
 # Keyword synonyms: every word on the right counts as the word on the left
 # when an indicator name is compared with the words around a claim.

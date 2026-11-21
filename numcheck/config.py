@@ -41,6 +41,8 @@ class Config:
     cues_subset: list[str]
     cues_target: list[str]
     hedges: dict[str, dict]                 # key -> {words, low, high, strict_low, strict_high}
+    age_words: dict[str, str] = field(default_factory=dict)     # lowercase word/phrase -> children|adults|older
+    stock: dict[str, list[str]] = field(default_factory=dict)  # cue lists for the stock path
     hedge_lookup: list[tuple[str, str]] = field(default_factory=list)  # (phrase, key), longest first
     fraction_tol: float = 2.5
     fraction_tol_hedged: float = 4.0
@@ -101,7 +103,13 @@ def _load(path: Path) -> Config:
     lookup.sort(key=lambda p: -len(p[0]))
     locs = {k: v for k, v in raw["locations"].items() if k != "all_locations"}
     m = raw["match"]
+    age_words = {}
+    for group, ws in raw.get("age", {}).items():
+        for w in ws:
+            age_words[w.lower()] = group
+    stock = {k: [w.lower() for w in v] for k, v in raw.get("stock", {}).items()}
     return Config(
+        age_words=age_words, stock=stock,
         units=units, unit_phrases=unit_phrases, person_units=set(raw["units"]["person_units"]),
         sex_words=sex_words, synonyms=synonyms, synonym_phrases=synonym_phrases, locations=locs,
         all_locations=[w.lower() for w in raw["locations"]["all_locations"]],
