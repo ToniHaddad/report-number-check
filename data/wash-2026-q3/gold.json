@@ -1,0 +1,1096 @@
+{
+ "report": "wash-2026-q3",
+ "split": "heldout",
+ "title": "Hygiene and Winterisation in Baalbek, Hermel and Zahle",
+ "blocks": [
+  "Hygiene and Winterisation in Baalbek, Hermel and Zahle",
+  "The Organization. Quarterly report to donors, project WASH-2026, July to September 2026. Prepared by the programme and logistics teams on 14 October 2026.",
+  "Executive summary",
+  "In the third quarter the Organization delivered family hygiene kits to 2,327 households in Baalbek, Hermel and Zahle, which means the project reached 2,327 people with hygiene items. The warehouses sent out 2,540 hygiene kits in total. Winter preparations started early in the high villages of Hermel, where nights are already cold in September, and a private donor gave 800 thermal blankets in kind to the Baalbek warehouse.",
+  "Figures in this report come from the project's indicator table and from the stock records kept in the warehouses: goods received notes for incoming stock and waybills for every dispatch. Quantities are counted in pieces; boxes are given where they help the reader.",
+  "Context",
+  "The Bekaa and Baalbek-Hermel governorates have some of the highest poverty rates in the country, and many families live in unfinished buildings, informal settlements or rented rooms without heating. Water supply is irregular in the summer, and households spend a growing share of their income on water trucking, soap and detergent. Prices for basic hygiene items rose again during the quarter, so many families stopped buying them altogether and relied on the kits.",
+  "Winter arrives early in the upper villages of Hermel and in the mountain areas east of Baalbek. The project therefore splits its winter support into two rounds: thermal blankets and children's clothing are positioned in the warehouses and centres before the cold, and the main distribution follows once the household lists have been confirmed with the local committees.",
+  "Reach by district",
+  "Households receiving a family hygiene kit: Baalbek 1,017, Hermel 551, Zahle 759, a total of 2,367 households across the three districts.",
+  "The kits reached 10,936 individuals, of whom 5,744 were women and girls. Children under 18 made up the largest group with 4,869 people, and 1,425 were older people aged 60 and above. At the end of June the count stood at 9,625 individuals, so reach grew as the Hermel distributions resumed.",
+  "Winter clothing kits went to 1,189 children, 602 of them girls. In Hermel, 436 households received a winterisation kit before the first frost. Community volunteers ran 68 hygiene promotion sessions in the three districts, mostly in the centres and in two informal settlements near Baalbek.",
+  "Distribution and stock",
+  "All hygiene and winter items left the warehouses on waybills, signed by the receiving centre or partner. From WH-09 the Baalbek centre received 298 boxes of family hygiene kits over the quarter. The Hermel centre took 760 boxes of thermal blankets, and the Hermel Youth Club, a partner organization, collected 540 thermal blankets for families in the upper villages.",
+  "Child winter clothing kits for Hermel were dispatched as 40 boxes and 1 piece, because the last deliveries were split to match the lists of children registered at the centre. The Social department of the Zahle centre received 20 sanitary pad packs for women in its case management programme. A total of 267 water jerrycans went to the Baalbek centre for families with no safe water storage. Dispatches of hygiene kits peaked in August, when 860 kits left the warehouses.",
+  "Table 1 gives the quarter's dispatches for the main items, by warehouse.",
+  "Item: Family hygiene kit | Warehouse: WH-09 Baalbek | Pieces dispatched: 1,832 | Boxes: 458",
+  "Item: Family hygiene kit | Warehouse: WH-07 Zahle | Pieces dispatched: 708 | Boxes: 177",
+  "Item: Thermal blanket | Warehouse: WH-09 Baalbek | Pieces dispatched: 1,300 | Boxes: 65",
+  "Item: Child winter clothing kit | Warehouse: WH-07 Zahle | Pieces dispatched: 200 | Boxes: 25",
+  "At WH-09 Baalbek the quarter opened with 80 family hygiene kits in stock. The warehouse received 1,940 kits and dispatched 1,832, leaving a balance of 308 kits on 30 September. The thermal blanket balance in the same warehouse was 760 pieces, most of it from the in-kind donation, which will cover the first winter round in November.",
+  "Accountability to communities",
+  "Families can call the free hotline on 01 555 210 or speak to the help desk at each centre. Most calls this quarter asked when winter items would arrive and whether households registered after the summer could still be included. Complaints about missing items in three kits were traced to a packing error at the supplier, and the kits were replaced within a week.",
+  "Constraints",
+  "Road access to the upper villages of Hermel was cut for four days in September after heavy rain, which delayed two planned distributions. Fuel costs for the trucks rose again, and the logistics team grouped dispatches so that each truck served several centres on one trip. One delivery of jerrycans arrived with damaged handles; a damage report was written and the operations manager approved the write-off.",
+  "The project keeps its stock separate from the other projects that share the Baalbek warehouse. Every receipt and dispatch is recorded against the project code, so that donor-funded kits are never counted twice or used for another project.",
+  "Monitoring",
+  "Centre staff record each household and its members when a kit is handed over, using the same household number as in the registration list. The monitoring officer checks these lists against the waybills each month, before the figures are entered in the indicator table. A phone survey of a sample of families will be carried out after the first winter round to check whether the blankets and clothing reached the people who needed them most.",
+  "Coordination",
+  "The project shares its distribution plans with the local authorities and with the other organizations working in the same villages, so that families are not left out and no household receives the same kit twice. Lists of households receiving winter items were exchanged with the Hermel Youth Club before each distribution, and the club's volunteers helped reach older people who could not travel to the centre.",
+  "Lessons learned",
+  "Packing kits for each family at the warehouse saved time at the centres but made it harder to adjust the contents for large households. From the next round, centres will add extra soap and sanitary items on the spot, recorded on the same waybill. The team also learned that dispatching in full boxes simplifies the stock count, while splitting boxes at the last delivery avoids leaving a few pieces stranded in a centre that cannot use them.",
+  "Finally, monthly checks of the stock records against the dispatch summary caught two waybills entered under the wrong project code. Both were corrected before the figures in this report were finalised, and the warehouse keepers received a short refresher on choosing the project when they record a dispatch.",
+  "Outlook",
+  "In the fourth quarter the project will distribute winterisation kits in Baalbek and Zahle, and plans to reach 1,500 more households before the end of December, subject to funding. Thermal blankets already in stock will go first to older people living alone and to families in unfinished buildings.",
+  "Synthetic report for testing. All names, figures and codes are invented."
+ ],
+ "items": [
+  {
+   "id": "static-0",
+   "text": "WASH-2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 1,
+   "start": 54,
+   "end": 63
+  },
+  {
+   "id": "static-1",
+   "text": "July to September 2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "period",
+   "block": 1,
+   "start": 65,
+   "end": 87
+  },
+  {
+   "id": "static-2",
+   "text": "14 October 2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 1,
+   "start": 138,
+   "end": 153
+  },
+  {
+   "id": "hh_hyg_total",
+   "text": "2,327",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 2327,
+   "cells": [
+    "Indicators!I8",
+    "Indicators!I9",
+    "Indicators!I10"
+   ],
+   "spec": {
+    "ind": "W-1"
+   },
+   "block": 3,
+   "start": 71,
+   "end": 76
+  },
+  {
+   "id": "ppl_err",
+   "text": "2,327",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "households_as_people",
+   "expected_value": 10936,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I30",
+    "Indicators!I31",
+    "Indicators!I32",
+    "Indicators!I33",
+    "Indicators!I34",
+    "Indicators!I35",
+    "Indicators!I36",
+    "Indicators!I37",
+    "Indicators!I38",
+    "Indicators!I39",
+    "Indicators!I40",
+    "Indicators!I41",
+    "Indicators!I42",
+    "Indicators!I43",
+    "Indicators!I44",
+    "Indicators!I45",
+    "Indicators!I46"
+   ],
+   "spec": {
+    "ind": "W-2"
+   },
+   "block": 3,
+   "start": 150,
+   "end": 155
+  },
+  {
+   "id": "kits_dsp_total",
+   "text": "2,540",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 2540,
+   "cells": [
+    "Dispatch summary!I38",
+    "Dispatch summary!I39",
+    "Dispatch summary!I40",
+    "Dispatch summary!I49",
+    "Dispatch summary!I50",
+    "Dispatch summary!I51",
+    "Dispatch summary!I60",
+    "Dispatch summary!I61",
+    "Dispatch summary!I62"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001"
+   },
+   "block": 3,
+   "start": 207,
+   "end": 212
+  },
+  {
+   "id": "bla_inkind",
+   "text": "800",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 800,
+   "cells": [
+    "Stock!H18"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "SHE-BLA-002",
+    "wh": "WH-09 Baalbek",
+    "measure": "received_inkind"
+   },
+   "block": 3,
+   "start": 371,
+   "end": 374
+  },
+  {
+   "id": "static-7",
+   "text": "two",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 7,
+   "start": 149,
+   "end": 152
+  },
+  {
+   "id": "hh_baalbek",
+   "text": "1,017",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1017,
+   "cells": [
+    "Indicators!I8"
+   ],
+   "spec": {
+    "ind": "W-1",
+    "loc": "Baalbek"
+   },
+   "block": 9,
+   "start": 51,
+   "end": 56
+  },
+  {
+   "id": "hh_hermel",
+   "text": "551",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 551,
+   "cells": [
+    "Indicators!I9"
+   ],
+   "spec": {
+    "ind": "W-1",
+    "loc": "Hermel"
+   },
+   "block": 9,
+   "start": 65,
+   "end": 68
+  },
+  {
+   "id": "hh_zahle",
+   "text": "759",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 759,
+   "cells": [
+    "Indicators!I10"
+   ],
+   "spec": {
+    "ind": "W-1",
+    "loc": "Zahle"
+   },
+   "block": 9,
+   "start": 76,
+   "end": 79
+  },
+  {
+   "id": "hh_total_err",
+   "text": "2,367",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "district_total",
+   "expected_value": 2327,
+   "cells": [
+    "Indicators!I8",
+    "Indicators!I9",
+    "Indicators!I10"
+   ],
+   "spec": {
+    "ind": "W-1"
+   },
+   "block": 9,
+   "start": 92,
+   "end": 97
+  },
+  {
+   "id": "ppl_total",
+   "text": "10,936",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 10936,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I30",
+    "Indicators!I31",
+    "Indicators!I32",
+    "Indicators!I33",
+    "Indicators!I34",
+    "Indicators!I35",
+    "Indicators!I36",
+    "Indicators!I37",
+    "Indicators!I38",
+    "Indicators!I39",
+    "Indicators!I40",
+    "Indicators!I41",
+    "Indicators!I42",
+    "Indicators!I43",
+    "Indicators!I44",
+    "Indicators!I45",
+    "Indicators!I46"
+   ],
+   "spec": {
+    "ind": "W-2"
+   },
+   "block": 10,
+   "start": 17,
+   "end": 23
+  },
+  {
+   "id": "ppl_f",
+   "text": "5,744",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 5744,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I30",
+    "Indicators!I31",
+    "Indicators!I35",
+    "Indicators!I36",
+    "Indicators!I37",
+    "Indicators!I41",
+    "Indicators!I42",
+    "Indicators!I43"
+   ],
+   "spec": {
+    "ind": "W-2",
+    "sex": "F"
+   },
+   "block": 10,
+   "start": 45,
+   "end": 50
+  },
+  {
+   "id": "static-14",
+   "text": "18",
+   "kind": "nonclaim",
+   "nonclaim_kind": "age",
+   "block": 10,
+   "start": 88,
+   "end": 90
+  },
+  {
+   "id": "ppl_children",
+   "text": "4,869",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 4869,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I32",
+    "Indicators!I35",
+    "Indicators!I38",
+    "Indicators!I41",
+    "Indicators!I44"
+   ],
+   "spec": {
+    "ind": "W-2",
+    "age": "CH"
+   },
+   "block": 10,
+   "start": 122,
+   "end": 127
+  },
+  {
+   "id": "ppl_older",
+   "text": "1,425",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1425,
+   "cells": [
+    "Indicators!I31",
+    "Indicators!I34",
+    "Indicators!I37",
+    "Indicators!I40",
+    "Indicators!I43",
+    "Indicators!I46"
+   ],
+   "spec": {
+    "ind": "W-2",
+    "age": "OL"
+   },
+   "block": 10,
+   "start": 140,
+   "end": 145
+  },
+  {
+   "id": "static-17",
+   "text": "60",
+   "kind": "nonclaim",
+   "nonclaim_kind": "age",
+   "block": 10,
+   "start": 169,
+   "end": 171
+  },
+  {
+   "id": "ppl_june",
+   "text": "9,625",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 9625,
+   "cells": [
+    "Indicators!I11",
+    "Indicators!I12",
+    "Indicators!I13",
+    "Indicators!I14",
+    "Indicators!I15",
+    "Indicators!I16",
+    "Indicators!I17",
+    "Indicators!I18",
+    "Indicators!I19",
+    "Indicators!I20",
+    "Indicators!I21",
+    "Indicators!I22",
+    "Indicators!I23",
+    "Indicators!I24",
+    "Indicators!I25",
+    "Indicators!I26",
+    "Indicators!I27",
+    "Indicators!I28"
+   ],
+   "spec": {
+    "ind": "W-2",
+    "period": "prev"
+   },
+   "block": 10,
+   "start": 221,
+   "end": 226
+  },
+  {
+   "id": "children_winter",
+   "text": "1,189",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1189,
+   "cells": [
+    "Indicators!I53",
+    "Indicators!I54",
+    "Indicators!I55",
+    "Indicators!I56",
+    "Indicators!I57",
+    "Indicators!I58"
+   ],
+   "spec": {
+    "ind": "W-3"
+   },
+   "block": 11,
+   "start": 29,
+   "end": 34
+  },
+  {
+   "id": "children_winter_girls",
+   "text": "602",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 602,
+   "cells": [
+    "Indicators!I53",
+    "Indicators!I55",
+    "Indicators!I57"
+   ],
+   "spec": {
+    "ind": "W-3",
+    "sex": "F"
+   },
+   "block": 11,
+   "start": 45,
+   "end": 48
+  },
+  {
+   "id": "hh_winter_hermel",
+   "text": "436",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 436,
+   "cells": [
+    "Indicators!I69"
+   ],
+   "spec": {
+    "ind": "W-5",
+    "loc": "Hermel"
+   },
+   "block": 11,
+   "start": 75,
+   "end": 78
+  },
+  {
+   "id": "sessions_err",
+   "text": "68",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "previous_quarter",
+   "expected_value": 81,
+   "cells": [
+    "Indicators!I62",
+    "Indicators!I63",
+    "Indicators!I64"
+   ],
+   "spec": {
+    "ind": "W-4"
+   },
+   "block": 11,
+   "start": 168,
+   "end": 170
+  },
+  {
+   "id": "static-23",
+   "text": "two",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 11,
+   "start": 251,
+   "end": 254
+  },
+  {
+   "id": "static-24",
+   "text": "09",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 13,
+   "start": 113,
+   "end": 115
+  },
+  {
+   "id": "kits_baalbek_boxes",
+   "text": "298",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 298.0,
+   "cells": [
+    "Dispatch summary!I38",
+    "Dispatch summary!I49",
+    "Dispatch summary!I60"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001",
+    "wh": "WH-09 Baalbek",
+    "dest": "Baalbek centre",
+    "measure": "boxes"
+   },
+   "block": 13,
+   "start": 144,
+   "end": 147
+  },
+  {
+   "id": "bla_hermel_err",
+   "text": "760",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "pieces_as_boxes",
+   "expected_value": 38.0,
+   "cells": [
+    "Dispatch summary!I43",
+    "Dispatch summary!I54",
+    "Dispatch summary!I65"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-BLA-002",
+    "dest": "Hermel centre",
+    "measure": "boxes"
+   },
+   "block": 13,
+   "start": 218,
+   "end": 221
+  },
+  {
+   "id": "bla_youth_club",
+   "text": "540",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 540,
+   "cells": [
+    "Dispatch summary!I44",
+    "Dispatch summary!I55",
+    "Dispatch summary!I66"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-BLA-002",
+    "dest": "Hermel Youth Club"
+   },
+   "block": 13,
+   "start": 310,
+   "end": 313
+  },
+  {
+   "id": "winter_hermel",
+   "text": "40 boxes and 1 piece",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 321,
+   "cells": [
+    "Dispatch summary!I46",
+    "Dispatch summary!I57",
+    "Dispatch summary!I68"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "NFI-WIN-004",
+    "dest": "Hermel centre"
+   },
+   "block": 14,
+   "start": 57,
+   "end": 77
+  },
+  {
+   "id": "san_social_err",
+   "text": "20",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "boxes_as_pieces",
+   "expected_value": 480,
+   "cells": [
+    "Dispatch summary!I42",
+    "Dispatch summary!I53",
+    "Dispatch summary!I64"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-SAN-003",
+    "dest": "Social department, Zahle centre"
+   },
+   "block": 14,
+   "start": 226,
+   "end": 228
+  },
+  {
+   "id": "jer_err",
+   "text": "267",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "transposed",
+   "expected_value": 276,
+   "cells": [
+    "Dispatch summary!I48",
+    "Dispatch summary!I59",
+    "Dispatch summary!I70"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "NFI-JER-001"
+   },
+   "block": 14,
+   "start": 303,
+   "end": 306
+  },
+  {
+   "id": "kits_aug",
+   "text": "860",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 860,
+   "cells": [
+    "Dispatch summary!I49",
+    "Dispatch summary!I50",
+    "Dispatch summary!I51"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001",
+    "month": "Aug"
+   },
+   "block": 14,
+   "start": 441,
+   "end": 444
+  },
+  {
+   "id": "static-32",
+   "text": "1",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 15,
+   "start": 6,
+   "end": 7
+  },
+  {
+   "id": "static-33",
+   "text": "09",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 16,
+   "start": 41,
+   "end": 43
+  },
+  {
+   "id": "t_kit9_pcs",
+   "text": "1,832",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1832,
+   "cells": [
+    "Dispatch summary!I38",
+    "Dispatch summary!I39",
+    "Dispatch summary!I49",
+    "Dispatch summary!I50",
+    "Dispatch summary!I60",
+    "Dispatch summary!I61"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001",
+    "wh": "WH-09 Baalbek"
+   },
+   "block": 16,
+   "start": 73,
+   "end": 78
+  },
+  {
+   "id": "t_kit9_box",
+   "text": "458",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 458.0,
+   "cells": [
+    "Dispatch summary!I38",
+    "Dispatch summary!I39",
+    "Dispatch summary!I49",
+    "Dispatch summary!I50",
+    "Dispatch summary!I60",
+    "Dispatch summary!I61"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001",
+    "wh": "WH-09 Baalbek",
+    "measure": "boxes"
+   },
+   "block": 16,
+   "start": 88,
+   "end": 91
+  },
+  {
+   "id": "static-36",
+   "text": "07",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 17,
+   "start": 41,
+   "end": 43
+  },
+  {
+   "id": "t_kit7_pcs",
+   "text": "708",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 708,
+   "cells": [
+    "Dispatch summary!I40",
+    "Dispatch summary!I51",
+    "Dispatch summary!I62"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001",
+    "wh": "WH-07 Zahle"
+   },
+   "block": 17,
+   "start": 71,
+   "end": 74
+  },
+  {
+   "id": "t_kit7_box",
+   "text": "177",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 177.0,
+   "cells": [
+    "Dispatch summary!I40",
+    "Dispatch summary!I51",
+    "Dispatch summary!I62"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001",
+    "wh": "WH-07 Zahle",
+    "measure": "boxes"
+   },
+   "block": 17,
+   "start": 84,
+   "end": 87
+  },
+  {
+   "id": "static-39",
+   "text": "09",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 18,
+   "start": 38,
+   "end": 40
+  },
+  {
+   "id": "t_bla9_pcs",
+   "text": "1,300",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1300,
+   "cells": [
+    "Dispatch summary!I43",
+    "Dispatch summary!I44",
+    "Dispatch summary!I54",
+    "Dispatch summary!I55",
+    "Dispatch summary!I65",
+    "Dispatch summary!I66"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-BLA-002",
+    "wh": "WH-09 Baalbek"
+   },
+   "block": 18,
+   "start": 70,
+   "end": 75
+  },
+  {
+   "id": "t_bla9_box",
+   "text": "65",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 65.0,
+   "cells": [
+    "Dispatch summary!I43",
+    "Dispatch summary!I44",
+    "Dispatch summary!I54",
+    "Dispatch summary!I55",
+    "Dispatch summary!I65",
+    "Dispatch summary!I66"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-BLA-002",
+    "wh": "WH-09 Baalbek",
+    "measure": "boxes"
+   },
+   "block": 18,
+   "start": 85,
+   "end": 87
+  },
+  {
+   "id": "static-42",
+   "text": "07",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 19,
+   "start": 48,
+   "end": 50
+  },
+  {
+   "id": "t_win7_pcs",
+   "text": "200",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 200,
+   "cells": [
+    "Dispatch summary!I47",
+    "Dispatch summary!I58",
+    "Dispatch summary!I69"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "NFI-WIN-004",
+    "wh": "WH-07 Zahle"
+   },
+   "block": 19,
+   "start": 78,
+   "end": 81
+  },
+  {
+   "id": "t_win7_box",
+   "text": "25",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 25.0,
+   "cells": [
+    "Dispatch summary!I47",
+    "Dispatch summary!I58",
+    "Dispatch summary!I69"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "NFI-WIN-004",
+    "wh": "WH-07 Zahle",
+    "measure": "boxes"
+   },
+   "block": 19,
+   "start": 91,
+   "end": 93
+  },
+  {
+   "id": "static-45",
+   "text": "09",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 20,
+   "start": 6,
+   "end": 8
+  },
+  {
+   "id": "kits_opening",
+   "text": "80",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 80,
+   "cells": [
+    "Stock!F14"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "HYG-KIT-001",
+    "wh": "WH-09 Baalbek",
+    "measure": "opening"
+   },
+   "block": 20,
+   "start": 41,
+   "end": 43
+  },
+  {
+   "id": "kits_received",
+   "text": "1,940",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1940,
+   "cells": [
+    "Stock!G14",
+    "Stock!H14"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "HYG-KIT-001",
+    "wh": "WH-09 Baalbek",
+    "measure": "received"
+   },
+   "block": 20,
+   "start": 97,
+   "end": 102
+  },
+  {
+   "id": "kits_dispatched",
+   "text": "1,832",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1832,
+   "cells": [
+    "Stock!I14"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "HYG-KIT-001",
+    "wh": "WH-09 Baalbek",
+    "measure": "dispatched"
+   },
+   "block": 20,
+   "start": 123,
+   "end": 128
+  },
+  {
+   "id": "kits_balance_err",
+   "text": "308",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "wrong_balance",
+   "expected_value": 188,
+   "cells": [
+    "Stock!J14"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "HYG-KIT-001",
+    "wh": "WH-09 Baalbek",
+    "measure": "closing"
+   },
+   "block": 20,
+   "start": 151,
+   "end": 154
+  },
+  {
+   "id": "static-50",
+   "text": "30 September",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 20,
+   "start": 163,
+   "end": 175
+  },
+  {
+   "id": "bla_balance",
+   "text": "760",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 760,
+   "cells": [
+    "Stock!J18"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "SHE-BLA-002",
+    "wh": "WH-09 Baalbek",
+    "measure": "closing"
+   },
+   "block": 20,
+   "start": 231,
+   "end": 234
+  },
+  {
+   "id": "static-52",
+   "text": "November",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 20,
+   "start": 324,
+   "end": 332
+  },
+  {
+   "id": "static-53",
+   "text": "01 555 210",
+   "kind": "nonclaim",
+   "nonclaim_kind": "phone",
+   "block": 22,
+   "start": 38,
+   "end": 48
+  },
+  {
+   "id": "static-54",
+   "text": "three",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 22,
+   "start": 262,
+   "end": 267
+  },
+  {
+   "id": "static-55",
+   "text": "four days",
+   "kind": "nonclaim",
+   "nonclaim_kind": "duration",
+   "block": 24,
+   "start": 56,
+   "end": 65
+  },
+  {
+   "id": "static-56",
+   "text": "September",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 24,
+   "start": 69,
+   "end": 78
+  },
+  {
+   "id": "static-57",
+   "text": "two",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 24,
+   "start": 111,
+   "end": 114
+  },
+  {
+   "id": "static-58",
+   "text": "two",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 32,
+   "start": 81,
+   "end": 84
+  },
+  {
+   "id": "static-59",
+   "text": "1,500",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 34,
+   "start": 110,
+   "end": 115
+  }
+ ]
+}
