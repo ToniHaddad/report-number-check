@@ -89,7 +89,7 @@ committee = ["committees", "committee"]
 "Garissa" = ["Garissa", "Dadaab"]
 
 # Words that mean "all locations together".
-all_locations = ["in total", "overall", "across all", "across the three", "combined", "altogether"]
+all_locations = ["in total", "in all", "overall", "across all", "across the three", "combined", "altogether"]
 
 [periods]
 # Phrases that point to the period before the current one.

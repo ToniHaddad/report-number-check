@@ -16,7 +16,7 @@ COLUMN_NAMES = {
     "unit": ["unit", "unit of measure", "uom", "units"],
     "period": ["period", "reporting period", "quarter", "reporting quarter"],
     "location": ["location", "governorate", "county", "district", "region", "area", "department",
-                 "province", "site", "state"],
+                 "province", "site", "state", "shelter", "collective shelter", "facility", "centre", "center"],
     "sex": ["sex", "gender", "sex/gender", "disaggregation"],
     "age": ["age group", "age", "age band", "age range"],
     "target": ["target", "planned", "plan", "target value"],

@@ -209,7 +209,7 @@ BLOCKS = [
           "figures were reported."),
     ("p", "The team also found that partners prefer fewer, larger deliveries, while centres prefer weekly "
           "deliveries that match their distribution days. From the next quarter the logistics team will plan "
-          "the two kinds of destination separately."),
+          "the [[two|unverifiable]] kinds of destination separately."),
     ("h1", "[[11|section]]. Plans for the next quarter"),
     ("p", "In the fourth quarter the project plans to reach [[3,800|unverifiable]] households per month, subject "
           "to funding, and will add winter items to the parcel for families in Akkar and Zahle. A review of the "

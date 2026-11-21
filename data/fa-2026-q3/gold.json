@@ -1137,6 +1137,18 @@
   },
   {
    "id": "static-68",
+   "text": "two",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 33,
+   "start": 197,
+   "end": 200
+  },
+  {
+   "id": "static-69",
    "text": "11",
    "kind": "nonclaim",
    "nonclaim_kind": "section",
@@ -1145,7 +1157,7 @@
    "end": 2
   },
   {
-   "id": "static-69",
+   "id": "static-70",
    "text": "3,800",
    "kind": "claim",
    "status": "unverifiable",
@@ -1157,7 +1169,7 @@
    "end": 54
   },
   {
-   "id": "static-70",
+   "id": "static-71",
    "text": "November 2026",
    "kind": "nonclaim",
    "nonclaim_kind": "date",

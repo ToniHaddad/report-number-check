@@ -76,7 +76,8 @@ class Matcher:
         self.keywords = {}
         self.kw_word: dict[str, dict[str, str]] = {}
         for ind in wb.indicators.values():
-            kws = content_stems(ind.name) - self.unit_stems - self.sex_stems - loc_stems
+            own = cfg.units.get(ind.unit, set()) | {stem(ind.unit)} | {"percent", "%"}
+            kws = content_stems(ind.name) - own - self.sex_stems - loc_stems
             kws = {k for k in kws if not k[0].isdigit() and k not in STOPWORDS and len(k) > 1}
             self.keywords[ind.id] = kws
             words = {}
@@ -328,10 +329,17 @@ class Matcher:
                 interp.locations = None
                 interp.location_how = "all locations: the other figures in the sentence are per location"
                 return
-            free =[m for m in mentions if not any(
+            free = [m for m in mentions if m[1] <= c.start and not any(
                 o.num_start >= m[0] and o.num_start <= m[1] + 60 for o in others)]
             if len(locs) == 1 and free:
                 interp.locations, interp.location_how = locs, "only location named in the sentence"
+                return
+            later = [m for m in mentions if m[0] >= c.end and not any(m[0] <= o.num_start for o in others
+                                                                       if o.num_start > c.end)]
+            if len(later) == len(mentions) and not any(
+                    ctx.clause_start <= m[0] < ctx.clause_start + len(ctx.clause) for m in later):
+                interp.locations = None
+                interp.location_how = "all locations (a place named later in the sentence, in another clause)"
                 return
             interp.unverifiable = interp.unverifiable or ("location unclear: the sentence names "
                                                           + ", ".join(locs))
@@ -491,6 +499,15 @@ class Matcher:
                         prior = [o for o in prev_sentence_claims if o.id in resolved and resolved[o.id].unit]
                         if prior:
                             unit = resolved[prior[-1].id].unit
+                    if unit is None:
+                        # "Households supplied this quarter, by shelter: 292 at ..."
+                        lead = ctx.block_text[ctx.sentence_start:c.start]
+                        if not any(ctx.sentence_start <= o.num_start < c.start for o in ctx.sentence_claims):
+                            for t in tokens(lead):   # the subject: the first unit word
+                                u = self.cfg.unit_of_word(t.low)
+                                if u and u not in ("boxes", "pieces"):
+                                    unit = u
+                                    break
                     if unit is None:
                         it.unverifiable = "no unit next to the number and nothing earlier in the sentence to refer to"
                         return it

@@ -16,13 +16,16 @@ from .workbook import Item, Workbook, period_phrases
 MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october",
           "november", "december"]
 SIZE = re.compile(r"^\d|^(kg|g|l|ml|cm|m)$", re.I)
+PACKAGING = {"bag", "bottle", "pack", "box", "can", "tin", "sachet", "roll", "carton", "bale"}
 NP_BREAK = {"were", "was", "are", "is", "from", "to", "for", "in", "at", "on", "and", "with", "this", "over",
             "during", "by", "which", "that", "who", "left", "went", "of", "a", "an", "the", "had", "have", "has"}
 
 
 def _item_stems(item: Item) -> list[str]:
     words = [w for w in re.findall(r"[A-Za-z0-9]+", item.name) if not SIZE.match(w)]
-    return [stem(w) for w in words]
+    stems = [stem(w) for w in words]
+    trimmed = [x for x in stems if x not in PACKAGING]
+    return trimmed or stems
 
 
 def _phrase_regex(name: str) -> re.Pattern:
@@ -136,18 +139,31 @@ class StockMatcher:
         if ctx.is_row:
             names = {m[2] for m in ms}
             return ms[0][2] if len(names) == 1 else "AMBIGUOUS"
+        clause_end = ctx.clause_start + len(ctx.clause)
+        in_clause = [m for m in ms if ctx.clause_start <= m[0] < clause_end]
+        cb = [m for m in in_clause if m[1] <= c.start and clear(m[1], c.start)]
+        if cb:
+            return cb[-1][2]
+        ca = [m for m in in_clause if m[0] >= c.end and clear(c.end, m[0])]
+        if ca:
+            return ca[0][2]
+        names = {m[2] for m in ms}
+        if len(names) == 1:
+            return ms[0][2]
         before = [m for m in ms if m[1] <= c.start and clear(m[1], c.start)]
         if before:
             return before[-1][2]
-        clause_end = ctx.clause_start + len(ctx.clause)
-        after = [m for m in ms if c.end <= m[0] < clause_end and clear(c.end, m[0])]
-        if after:
-            return after[0][2]
-        names = {m[2] for m in ms}
-        free = [m for m in ms if clear(min(m[1], c.start), max(m[0], c.end))]
-        if len(names) == 1 and free:
-            return ms[0][2]
-        return "AMBIGUOUS" if names else None
+        return "AMBIGUOUS"
+
+    def nearest_cue(self, before: str) -> str | None:
+        """The measure whose cue word comes last before the number in its clause."""
+        best, pos = None, -1
+        for key in ("closing", "opening", "received", "dispatch"):
+            for w in self.cfg.stock.get(key, []):
+                for m in re.finditer(r"(?<![\w-])" + re.escape(w) + r"(?![\w-])", before):
+                    if m.start() > pos:
+                        best, pos = key, m.start()
+        return best
 
     def has(self, text: str, key: str) -> bool:
         low = text.lower()
@@ -168,6 +184,8 @@ class StockMatcher:
         signal = bool(whs or dests) or self.has(sentence, "signal")
         earlier = [resolved[o.id] for o in ctx.sentence_claims if o.num_start < c.num_start and o.id in resolved]
         stock_ante = next((e for e in reversed(earlier) if e.source in ("dispatch", "stock") and e.item), None)
+        prev_stock = next((resolved[o.id] for o in reversed(prev_claims) if o.id in resolved
+                           and resolved[o.id].source in ("dispatch", "stock") and resolved[o.id].item), None)
         np_items = self.find_items(stems, sentence) if stems else []
         np_named_other = bool(stems) and not np_items and unit is None
         if not signal:
@@ -178,13 +196,16 @@ class StockMatcher:
                 return False
             if not stock_ante:
                 return False
-        if not np_items and unit is None and not stock_ante and not ctx.is_row:
+        named_items = np_items or self.find_items([], sentence)
+        if not named_items and unit not in ("pieces", "boxes") and not stock_ante:
             return False
 
         it.source = "stock"   # refined below
-        items = np_items or self.find_items([], sentence)
+        items = named_items
         if not items and stock_ante:
             items = [stock_ante.item]
+        if not items and prev_stock and not whs and not dests:
+            items = [prev_stock.item]     # "The warehouse received 1,200 bottles": the item of the sentence before
         if len(items) != 1:
             it.unverifiable = ("no stock item named next to the figure" if not items else
                                "item unclear: " + ", ".join(i.name for i in items))
@@ -199,15 +220,19 @@ class StockMatcher:
         before = ctx.block_text[ctx.clause_start:c.start].lower()
         wh = self.pick_mention(whs, ctx)
         dest = self.pick_mention(dests, ctx)
-        if self.has(clause, "closing") or (not dest and self.has(before[-40:], "closing")):
+        nearest = self.nearest_cue(before)
+        if dest and dest != "AMBIGUOUS" and nearest not in ("closing", "opening"):
+            measure = "dispatched"
+        elif nearest in ("closing", "opening", "dispatch"):
+            measure = "dispatched" if nearest == "dispatch" else nearest
+        elif nearest == "received":
+            measure = "received_purchase" if self.has(clause, "purchase") else                 "received_inkind" if self.has(clause, "inkind") else "received"
+        elif self.has(clause, "closing"):
             measure = "closing"
         elif self.has(clause, "opening"):
             measure = "opening"
-        elif dest and dest != "AMBIGUOUS":
-            measure = "dispatched"
         elif self.has(clause, "received") and not self.has(clause, "dispatch"):
-            measure = "received_inkind" if self.has(clause, "inkind") or self.has(low_sent, "inkind") \
-                and not self.has(clause, "purchase") else "received"
+            measure = "received_inkind" if self.has(clause, "inkind") else "received"
             if self.has(clause, "purchase"):
                 measure = "received_purchase"
         elif self.has(clause, "dispatch") or self.has(before, "dispatch") or (ctx.is_row and self.has(low_sent, "dispatch")):
@@ -229,11 +254,17 @@ class StockMatcher:
         if wh is None and stock_ante and stock_ante.warehouses:
             it.warehouses = stock_ante.warehouses
             it.location_how = "same warehouse as the figure before it"
+        elif wh is None and re.search(r"\b(the|this|that|same) warehouse\b", low_sent) and prev_stock \
+                and prev_stock.warehouses:
+            it.warehouses = prev_stock.warehouses
+            it.location_how = "'the warehouse' refers to the one in the sentence before"
         else:
             it.warehouses = [wh] if wh else None
             it.location_how = "named in the sentence" if wh else "no warehouse named: all warehouses"
         it.destinations = [dest] if dest and measure == "dispatched" else None
-        if measure == "dispatched" and self.wb.dispatch is not None:
+        flow = stock_ante is not None and stock_ante.source == "stock"
+        if measure == "dispatched" and self.wb.dispatch is not None and not (flow and not it.destinations
+                                                                             and self.wb.stock is not None):
             it.source = "dispatch"
         elif self.wb.stock is not None:
             it.source = "stock"
