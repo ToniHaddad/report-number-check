@@ -24,5 +24,5 @@ jobs:
       - name: The CLI fails the build when a report has an inconsistent figure
         run: |
           set +e
-          python -m numcheck check data/kenya-wash-q3-2026/report.docx data/kenya-wash-q3-2026/indicators.xlsx -q
+          python -m numcheck check data/ea-2026-q3/report.docx data/ea-2026-q3/indicators.xlsx -q
           test $? -eq 1

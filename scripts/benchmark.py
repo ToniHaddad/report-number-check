@@ -4,7 +4,7 @@
     python scripts/benchmark.py --final    # also the held-out report
     python scripts/benchmark.py -v         # list every disagreement with the gold labels
 
-The held-out report (Colombia) is excluded unless --final is given, so that it
+The held-out report (WASH-2026) is excluded unless --final is given, so that it
 is not looked at while the rules are being tuned.
 """
 from __future__ import annotations

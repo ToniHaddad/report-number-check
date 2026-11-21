@@ -30,10 +30,10 @@ def write_workbook(path: Path, rows, headers=HEADERS):
 # A small workbook used by most end-to-end tests. Data rows start at Excel row 4.
 BASIC_ROWS = [
     # households, by location, two quarters
-    ("HH-1", "Households receiving cash assistance", "Households", "Q2 2026", "North", "All", 900, 850),   # 4
-    ("HH-1", "Households receiving cash assistance", "Households", "Q2 2026", "South", "All", 1100, 1000),  # 5
-    ("HH-1", "Households receiving cash assistance", "Households", "Q3 2026", "North", "All", 1000, 800),   # 6
-    ("HH-1", "Households receiving cash assistance", "Households", "Q3 2026", "South", "All", 1200, 1150),  # 7
+    ("HH-1", "Households receiving food parcels", "Households", "Q2 2026", "North", "All", 900, 850),   # 4
+    ("HH-1", "Households receiving food parcels", "Households", "Q2 2026", "South", "All", 1100, 1000),  # 5
+    ("HH-1", "Households receiving food parcels", "Households", "Q3 2026", "North", "All", 1000, 800),   # 6
+    ("HH-1", "Households receiving food parcels", "Households", "Q3 2026", "South", "All", 1200, 1150),  # 7
     # people, by location and sex, current quarter
     ("PP-1", "People reached by hygiene promotion", "People", "Q3 2026", "North", "Female", 1000, 1100),   # 8
     ("PP-1", "People reached by hygiene promotion", "People", "Q3 2026", "North", "Male", 1000, 900),      # 9

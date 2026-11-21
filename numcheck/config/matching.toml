@@ -14,7 +14,6 @@ teachers = ["teacher", "teachers", "educator", "educators", "facilitator", "faci
 usd = ["usd", "us$", "$", "dollar", "dollars"]
 surveys = ["survey", "surveys", "interview", "interviews"]
 cases = ["case", "cases", "complaint", "complaints"]
-boreholes = ["borehole", "boreholes", "well", "wells"]
 latrines = ["latrine", "latrines", "toilet", "toilets"]
 kits = ["kit", "kits"]
 schools = ["school", "schools"]
@@ -84,9 +83,6 @@ committee = ["committees", "committee"]
 "Bekaa" = ["Bekaa", "Beqaa", "Bekaa valley"]
 "Tripoli" = ["Tripoli", "Tarablus"]
 "Akkar" = ["Akkar"]
-"Turkana" = ["Turkana", "Lodwar"]
-"Marsabit" = ["Marsabit"]
-"Garissa" = ["Garissa", "Dadaab"]
 
 # Words that mean "all locations together".
 all_locations = ["in total", "in all", "overall", "across all", "across the three", "combined", "altogether"]

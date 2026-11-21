@@ -541,7 +541,7 @@ class Matcher:
                     cands = [i for i in inds if i.unit == unit and not i.rate]
                     if not self.pick(cands, ctx, it, f"counts {unit}"):
                         # The previous sentence counted the same unit for one indicator:
-                        # this sentence continues it ("Akkar accounted for 1,204 households, ...").
+                        # this sentence continues it ("Akkar accounted for 798 households, Zahle for 932").
                         prior = [resolved[o.id] for o in prev_sentence_claims if o.id in resolved
                                  and resolved[o.id].indicator is not None
                                  and resolved[o.id].indicator.unit == unit

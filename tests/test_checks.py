@@ -14,7 +14,7 @@ def refs(r):
 # ---------------------------------------------------------------- direct figures
 
 def test_direct_figure_consistent_with_cells(run):
-    rep = run("Northbridge Relief delivered cash assistance to 1,950 households this quarter.")
+    rep = run("The Organization delivered food parcels to 1,950 households this quarter.")
     r = by_text(rep, "1,950")
     assert r.status == "consistent"
     assert refs(r) == ["Indicators!H6", "Indicators!H7"]
@@ -22,7 +22,7 @@ def test_direct_figure_consistent_with_cells(run):
 
 
 def test_direct_figure_inconsistent_shows_expected_and_cells(run):
-    rep = run("Northbridge Relief delivered cash assistance to 1,905 households this quarter.")
+    rep = run("The Organization delivered food parcels to 1,905 households this quarter.")
     r = by_text(rep, "1,905")
     assert r.status == "inconsistent"
     assert r.expected == 1950
@@ -31,7 +31,7 @@ def test_direct_figure_inconsistent_shows_expected_and_cells(run):
 
 
 def test_location_figure(run):
-    rep = run("In the South, cash assistance reached 1,150 households.")
+    rep = run("In the South, food parcels reached 1,150 households.")
     r = by_text(rep, "1,150")
     assert r.status == "consistent"
     assert r.interp.locations == ["South"]
@@ -39,26 +39,26 @@ def test_location_figure(run):
 
 
 def test_previous_quarter_figure_is_flagged_with_a_hint(run):
-    rep = run("Cash assistance reached 1,850 households this quarter.")
+    rep = run("Food parcels reached 1,850 households this quarter.")
     r = by_text(rep, "1,850")
     assert r.status == "inconsistent"
     assert any("Q2 2026" in h for h in r.hints)
 
 
 def test_figure_for_last_quarter_is_read_as_last_quarter(run):
-    rep = run("Cash assistance reached 1,950 households, up from 1,850 last quarter.")
+    rep = run("Food parcels reached 1,950 households, up from 1,850 last quarter.")
     assert by_text(rep, "1,950").status == "consistent"
     r = by_text(rep, "1,850")
     assert r.status == "consistent" and r.interp.periods == ["Q2 2026"]
 
 
 def test_hedged_figure_within_tolerance(run):
-    rep = run("Cash assistance reached nearly 2,000 households.")
+    rep = run("Food parcels reached nearly 2,000 households.")
     assert by_text(rep, "nearly 2,000").status == "consistent"
 
 
 def test_hedge_that_overstates_is_inconsistent(run):
-    rep = run("Cash assistance reached more than 2,000 households.")
+    rep = run("Food parcels reached more than 2,000 households.")
     r = by_text(rep, "more than 2,000")
     assert r.status == "inconsistent"
     assert any("overstates" in h for h in r.hints)
@@ -85,7 +85,7 @@ def test_women_men_split_that_does_not_sum(run):
 
 def test_percent_of_target_is_achieved_over_target(run):
     # 1,950 / 2,200 = 88.6%
-    rep = run("Cash assistance reached 1,950 households, 89 percent of the quarterly target.")
+    rep = run("Food parcels reached 1,950 households, 89 percent of the quarterly target.")
     r = by_text(rep, "89 percent")
     assert r.status == "consistent"
     assert r.interp.measure == "pct_target"
@@ -94,7 +94,7 @@ def test_percent_of_target_is_achieved_over_target(run):
 
 def test_percent_against_the_wrong_target(run):
     # 1,950 / 2,000 (the Q2 target) = 97.5%
-    rep = run("Cash assistance reached 1,950 households, 98 percent of the quarterly target.")
+    rep = run("Food parcels reached 1,950 households, 98 percent of the quarterly target.")
     r = by_text(rep, "98 percent")
     assert r.status == "inconsistent"
     assert any("Q2 2026 target" in h for h in r.hints)
@@ -108,7 +108,7 @@ def test_share_of_women(run):
 
 
 def test_sum_across_locations(run):
-    rep = run("Cash assistance reached 1,950 households: 800 in the North and 1,150 in the South.")
+    rep = run("Food parcels reached 1,950 households: 800 in the North and 1,150 in the South.")
     total = by_text(rep, "1,950")
     assert total.status == "consistent" and total.interp.locations is None
     assert by_text(rep, "800").interp.locations == ["North"]
@@ -117,7 +117,7 @@ def test_sum_across_locations(run):
 
 
 def test_locations_that_do_not_add_up(run):
-    rep = run("Cash assistance reached 1,950 households: 800 in the North and 1,105 in the South.")
+    rep = run("Food parcels reached 1,950 households: 800 in the North and 1,105 in the South.")
     south = by_text(rep, "1,105")
     assert south.status == "inconsistent"
     assert any("gap of 45" in n for n in south.notes)
@@ -134,7 +134,7 @@ def test_unit_without_any_indicator_keyword_is_unverifiable(run):
     rep = run("Floods damaged 800 households in the North.")
     r = by_text(rep, "800")
     # 800 is exactly the North value in the workbook, but nothing in the sentence says the
-    # floods are about cash assistance. A coincidence must not be reported as consistent.
+    # floods are about food parcels. A coincidence must not be reported as consistent.
     assert r.status == "unverifiable"
     assert "weak match" in r.reason
 
@@ -150,22 +150,22 @@ def test_two_equally_good_indicators_is_unverifiable(tmp_path, run):
 
 
 def test_plans_are_unverifiable(run):
-    rep = run("Next quarter the project plans to reach 2,500 households with cash assistance.")
+    rep = run("Next quarter the project plans to reach 2,500 households with food parcels.")
     assert by_text(rep, "2,500").status == "unverifiable"
 
 
 def test_subset_cues_are_unverifiable(run):
-    rep = run("Card failures affected 150 households receiving cash assistance in the North.")
+    rep = run("Card failures affected 150 households receiving food parcels in the North.")
     assert by_text(rep, "150").status == "unverifiable"
 
 
 def test_sex_breakdown_missing_in_workbook_is_unverifiable(run):
-    rep = run("Cash assistance reached 1,950 households, 900 of them women.")
+    rep = run("Food parcels reached 1,950 households, 900 of them women.")
     assert by_text(rep, "900").status == "unverifiable"
 
 
 def test_location_not_in_workbook_is_not_matched_to_a_total(run):
-    rep = run("In the North and the South, cash assistance reached 1,950 households.")
+    rep = run("In the North and the South, food parcels reached 1,950 households.")
     assert by_text(rep, "1,950").status == "consistent"
 
 
