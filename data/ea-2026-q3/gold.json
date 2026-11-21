@@ -1,0 +1,1286 @@
+{
+ "report": "ea-2026-q3",
+ "split": "tuning",
+ "title": "Emergency Appeal: Relief Items for Displaced Families in Collective Shelters",
+ "blocks": [
+  "Emergency Appeal: Relief Items for Displaced Families in Collective Shelters",
+  "The Organization. Quarterly report to donors, project EA-2026, third quarter 2026. Covers 1 July to 30 September 2026.",
+  "1. Summary",
+  "Since the displacement began in June, families have been staying in schools that the authorities opened as collective shelters in Saida, Jbeil and Jounieh. This quarter the Organization supplied relief items to 3,888 people in 826 households across the four shelters it supports. The warehouses dispatched 950 foam mattresses and about 1,800 family hygiene kits to the shelters.",
+  "Figures come from the project's indicator table and from the stock records of the Saida and Jbeil warehouses: goods received notes, including in-kind donations, and the waybills of every dispatch. Quantities are in pieces unless boxes or bales are mentioned.",
+  "2. Situation",
+  "Families arrived with very little and many had to leave again when access to their villages changed. Shelter committees, made up of volunteers from among the displaced families, keep the list of households in each school and tell the emergency operations room what is missing. The operations room decides which warehouse dispatches, follows each delivery until the shelter confirms it, and records cancelled deliveries when a road is closed.",
+  "Schools are crowded, with several families sharing each classroom. Water and toilets are the main concern of the shelter committees, followed by mattresses and blankets for families who sleep on the floor, and hygiene items for women, babies and older people.",
+  "3. People reached in the shelters",
+  "Households supplied this quarter, by shelter: 292 at Saida Public School, 214 at Saida Technical Institute, 174 at Jbeil Public School and 146 at Jounieh Secondary School, 826 households in all.",
+  "At Jbeil Public School the team reached 174 people. Saida Technical Institute hosted 972 people: 524 women and girls and 498 men and boys. Across the shelters, 494 older people received relief items, many of them with chronic illnesses that the Medical department follows up.",
+  "Table 1 shows the people reached in each shelter, by sex and for children.",
+  "Shelter: Saida Public School | Women and girls: 686 | Men and boys: 633 | Children: 588 | Total: 1,319",
+  "Shelter: Saida Technical Institute | Women and girls: 524 | Men and boys: 448 | Children: 426 | Total: 972",
+  "Shelter: Jbeil Public School | Women and girls: 464 | Men and boys: 402 | Children: 404 | Total: 866",
+  "Shelter: Jounieh Secondary School | Women and girls: 381 | Men and boys: 350 | Children: 328 | Total: 761",
+  "Volunteers in the shelter kitchens served 100,134 hot meals during the quarter. By the end of June, when the shelters had just opened, 25,236 meals had been served.",
+  "4. Relief items dispatched",
+  "Saida Public School received 28 bales of foam mattresses from WH-14, and Jbeil Public School received 27 foam mattresses from WH-21. Jounieh Secondary School received 260 fleece blankets and 78 boxes and 3 pieces of family hygiene kits. Jbeil Public School received 348 family hygiene kits. The Medical department of the Saida centre received 522 baby diaper packs for mothers of newborns seen at its clinic. Blanket dispatches peaked in August, when 360 blankets left the warehouses.",
+  "5. Stock and in-kind donations",
+  "A private company donated 60 foam mattresses in kind to WH-14 Saida, recorded on a goods received note with the donor's name and an estimated value. After the quarter's dispatches, WH-14 held 110 mattresses.",
+  "At WH-21 Jbeil, the fleece blanket stock opened the quarter at 900 pieces. The warehouse received 180 blankets, partly as in-kind donations, and dispatched 540, leaving 580 in stock at the end of September.",
+  "The appeal's stock is held separately from the other projects in the same warehouses. Donated items are recorded under the appeal's project code with the donor's name, so that each donor can be told where its goods went.",
+  "6. Protection and inclusion",
+  "Relief items are handed to each household in the presence of a shelter committee member, and the distribution list is read aloud so that families can see who has received what. Women, older people and people with disabilities are served first, and items for families who cannot queue are brought to their classroom. Separate distribution times were set for hygiene items for women and girls, with female volunteers handing them out.",
+  "The Medical department visits each shelter weekly. It identifies pregnant women, newborns and people with chronic illnesses, and asks the operations room for diapers, hygiene items or extra blankets when they are needed. These requests are dispatched from the Saida centre's stock on a separate waybill so that they can be followed up.",
+  "7. Coordination",
+  "The emergency operations room met by phone every morning and kept a running chat with the shelter focal points, the warehouse keepers in Saida and Jbeil, and the drivers. Each request from a shelter was logged with the item, the quantity and the warehouse expected to send it. When access to Jounieh was restricted for two days in August, three planned deliveries were cancelled and rescheduled.",
+  "8. Accountability",
+  "Shelter committees collect complaints and suggestions every evening, and families can also call the hotline on 01 555 902. Most requests asked for more mattresses for families who arrived late, for baby formula and for clothes. Requests outside the appeal's scope were referred to other organizations working in the same shelters.",
+  "9. Challenges and lessons",
+  "The first deliveries were counted in bales and boxes at the warehouse but in pieces at the shelters, which led to confusion when shelters confirmed receipt. The waybill now shows both, and shelter focal points count pieces. Damaged mattresses from one delivery were recorded on a damage report and written off after approval by the operations manager.",
+  "Keeping in-kind donations on the same stock records as purchased items made it possible to report to each donor without a separate spreadsheet. The team will keep this approach for the rest of the appeal.",
+  "10. Next steps",
+  "As some families return home, the appeal will shift from bulk relief items to return kits. The operations room expects to close one shelter in October and will move its remaining stock to the Saida warehouse.",
+  "Synthetic report for testing. All names, figures and codes are invented."
+ ],
+ "items": [
+  {
+   "id": "static-0",
+   "text": "EA-2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 1,
+   "start": 54,
+   "end": 61
+  },
+  {
+   "id": "static-1",
+   "text": "2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "year",
+   "block": 1,
+   "start": 77,
+   "end": 81
+  },
+  {
+   "id": "static-2",
+   "text": "1 July",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 1,
+   "start": 90,
+   "end": 96
+  },
+  {
+   "id": "static-3",
+   "text": "30 September 2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 1,
+   "start": 100,
+   "end": 117
+  },
+  {
+   "id": "static-4",
+   "text": "1",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 2,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-5",
+   "text": "June",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 3,
+   "start": 32,
+   "end": 36
+  },
+  {
+   "id": "ppl_total",
+   "text": "3,888",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 3888,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I30",
+    "Indicators!I31",
+    "Indicators!I32",
+    "Indicators!I33",
+    "Indicators!I34",
+    "Indicators!I35",
+    "Indicators!I36",
+    "Indicators!I37",
+    "Indicators!I38",
+    "Indicators!I39",
+    "Indicators!I40",
+    "Indicators!I41",
+    "Indicators!I42",
+    "Indicators!I43",
+    "Indicators!I44",
+    "Indicators!I45",
+    "Indicators!I46",
+    "Indicators!I47",
+    "Indicators!I48",
+    "Indicators!I49",
+    "Indicators!I50",
+    "Indicators!I51",
+    "Indicators!I52"
+   ],
+   "spec": {
+    "ind": "EA-1"
+   },
+   "block": 3,
+   "start": 211,
+   "end": 216
+  },
+  {
+   "id": "hh_total",
+   "text": "826",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 826,
+   "cells": [
+    "Indicators!I57",
+    "Indicators!I58",
+    "Indicators!I59",
+    "Indicators!I60"
+   ],
+   "spec": {
+    "ind": "EA-2"
+   },
+   "block": 3,
+   "start": 227,
+   "end": 230
+  },
+  {
+   "id": "static-8",
+   "text": "four",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 3,
+   "start": 253,
+   "end": 257
+  },
+  {
+   "id": "mats_total",
+   "text": "950",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 950,
+   "cells": [
+    "Dispatch summary!I44",
+    "Dispatch summary!I45",
+    "Dispatch summary!I46",
+    "Dispatch summary!I47",
+    "Dispatch summary!I57",
+    "Dispatch summary!I58",
+    "Dispatch summary!I59",
+    "Dispatch summary!I60",
+    "Dispatch summary!I70",
+    "Dispatch summary!I71",
+    "Dispatch summary!I72",
+    "Dispatch summary!I73"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-MAT-001"
+   },
+   "block": 3,
+   "start": 306,
+   "end": 309
+  },
+  {
+   "id": "kits_about",
+   "text": "1,800",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1799,
+   "cells": [
+    "Dispatch summary!I52",
+    "Dispatch summary!I53",
+    "Dispatch summary!I54",
+    "Dispatch summary!I55",
+    "Dispatch summary!I65",
+    "Dispatch summary!I66",
+    "Dispatch summary!I67",
+    "Dispatch summary!I68",
+    "Dispatch summary!I78",
+    "Dispatch summary!I79",
+    "Dispatch summary!I80",
+    "Dispatch summary!I81"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001"
+   },
+   "block": 3,
+   "start": 336,
+   "end": 341
+  },
+  {
+   "id": "static-11",
+   "text": "2",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 5,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-12",
+   "text": "3",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 8,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "hh_sps",
+   "text": "292",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 292,
+   "cells": [
+    "Indicators!I57"
+   ],
+   "spec": {
+    "ind": "EA-2",
+    "loc": "Saida Public School"
+   },
+   "block": 9,
+   "start": 46,
+   "end": 49
+  },
+  {
+   "id": "hh_sti",
+   "text": "214",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 214,
+   "cells": [
+    "Indicators!I58"
+   ],
+   "spec": {
+    "ind": "EA-2",
+    "loc": "Saida Technical Institute"
+   },
+   "block": 9,
+   "start": 74,
+   "end": 77
+  },
+  {
+   "id": "hh_jps",
+   "text": "174",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 174,
+   "cells": [
+    "Indicators!I59"
+   ],
+   "spec": {
+    "ind": "EA-2",
+    "loc": "Jbeil Public School"
+   },
+   "block": 9,
+   "start": 108,
+   "end": 111
+  },
+  {
+   "id": "hh_jss",
+   "text": "146",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 146,
+   "cells": [
+    "Indicators!I60"
+   ],
+   "spec": {
+    "ind": "EA-2",
+    "loc": "Jounieh Secondary School"
+   },
+   "block": 9,
+   "start": 139,
+   "end": 142
+  },
+  {
+   "id": "hh_total2",
+   "text": "826",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 826,
+   "cells": [
+    "Indicators!I57",
+    "Indicators!I58",
+    "Indicators!I59",
+    "Indicators!I60"
+   ],
+   "spec": {
+    "ind": "EA-2"
+   },
+   "block": 9,
+   "start": 172,
+   "end": 175
+  },
+  {
+   "id": "ppl_jps_err",
+   "text": "174",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "households_as_people",
+   "expected_value": 866,
+   "cells": [
+    "Indicators!I41",
+    "Indicators!I42",
+    "Indicators!I43",
+    "Indicators!I44",
+    "Indicators!I45",
+    "Indicators!I46"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jbeil Public School"
+   },
+   "block": 10,
+   "start": 40,
+   "end": 43
+  },
+  {
+   "id": "ppl_sti",
+   "text": "972",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 972,
+   "cells": [
+    "Indicators!I35",
+    "Indicators!I36",
+    "Indicators!I37",
+    "Indicators!I38",
+    "Indicators!I39",
+    "Indicators!I40"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Technical Institute"
+   },
+   "block": 10,
+   "start": 85,
+   "end": 88
+  },
+  {
+   "id": "ppl_sti_f",
+   "text": "524",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 524,
+   "cells": [
+    "Indicators!I35",
+    "Indicators!I36",
+    "Indicators!I37"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Technical Institute",
+    "sex": "F"
+   },
+   "block": 10,
+   "start": 97,
+   "end": 100
+  },
+  {
+   "id": "ppl_sti_m_err",
+   "text": "498",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "split_sum",
+   "expected_value": 448,
+   "cells": [
+    "Indicators!I38",
+    "Indicators!I39",
+    "Indicators!I40"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Technical Institute",
+    "sex": "M"
+   },
+   "block": 10,
+   "start": 121,
+   "end": 124
+  },
+  {
+   "id": "ppl_older",
+   "text": "494",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 494,
+   "cells": [
+    "Indicators!I31",
+    "Indicators!I34",
+    "Indicators!I37",
+    "Indicators!I40",
+    "Indicators!I43",
+    "Indicators!I46",
+    "Indicators!I49",
+    "Indicators!I52"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "age": "OL"
+   },
+   "block": 10,
+   "start": 160,
+   "end": 163
+  },
+  {
+   "id": "static-23",
+   "text": "1",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 11,
+   "start": 6,
+   "end": 7
+  },
+  {
+   "id": "t_sps_f",
+   "text": "686",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 686,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I30",
+    "Indicators!I31"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Public School",
+    "sex": "F"
+   },
+   "block": 12,
+   "start": 48,
+   "end": 51
+  },
+  {
+   "id": "t_sps_m",
+   "text": "633",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 633,
+   "cells": [
+    "Indicators!I32",
+    "Indicators!I33",
+    "Indicators!I34"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Public School",
+    "sex": "M"
+   },
+   "block": 12,
+   "start": 68,
+   "end": 71
+  },
+  {
+   "id": "t_sps_ch",
+   "text": "588",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 588,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I32"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Public School",
+    "age": "CH"
+   },
+   "block": 12,
+   "start": 84,
+   "end": 87
+  },
+  {
+   "id": "t_sps_tot",
+   "text": "1,319",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1319,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I30",
+    "Indicators!I31",
+    "Indicators!I32",
+    "Indicators!I33",
+    "Indicators!I34"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Public School"
+   },
+   "block": 12,
+   "start": 97,
+   "end": 102
+  },
+  {
+   "id": "t_sti_f",
+   "text": "524",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 524,
+   "cells": [
+    "Indicators!I35",
+    "Indicators!I36",
+    "Indicators!I37"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Technical Institute",
+    "sex": "F"
+   },
+   "block": 13,
+   "start": 54,
+   "end": 57
+  },
+  {
+   "id": "t_sti_m",
+   "text": "448",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 448,
+   "cells": [
+    "Indicators!I38",
+    "Indicators!I39",
+    "Indicators!I40"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Technical Institute",
+    "sex": "M"
+   },
+   "block": 13,
+   "start": 74,
+   "end": 77
+  },
+  {
+   "id": "t_sti_ch",
+   "text": "426",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 426,
+   "cells": [
+    "Indicators!I35",
+    "Indicators!I38"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Technical Institute",
+    "age": "CH"
+   },
+   "block": 13,
+   "start": 90,
+   "end": 93
+  },
+  {
+   "id": "t_sti_tot",
+   "text": "972",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 972,
+   "cells": [
+    "Indicators!I35",
+    "Indicators!I36",
+    "Indicators!I37",
+    "Indicators!I38",
+    "Indicators!I39",
+    "Indicators!I40"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Saida Technical Institute"
+   },
+   "block": 13,
+   "start": 103,
+   "end": 106
+  },
+  {
+   "id": "t_jps_f",
+   "text": "464",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 464,
+   "cells": [
+    "Indicators!I41",
+    "Indicators!I42",
+    "Indicators!I43"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jbeil Public School",
+    "sex": "F"
+   },
+   "block": 14,
+   "start": 48,
+   "end": 51
+  },
+  {
+   "id": "t_jps_m",
+   "text": "402",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 402,
+   "cells": [
+    "Indicators!I44",
+    "Indicators!I45",
+    "Indicators!I46"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jbeil Public School",
+    "sex": "M"
+   },
+   "block": 14,
+   "start": 68,
+   "end": 71
+  },
+  {
+   "id": "t_jps_ch",
+   "text": "404",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 404,
+   "cells": [
+    "Indicators!I41",
+    "Indicators!I44"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jbeil Public School",
+    "age": "CH"
+   },
+   "block": 14,
+   "start": 84,
+   "end": 87
+  },
+  {
+   "id": "t_jps_tot",
+   "text": "866",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 866,
+   "cells": [
+    "Indicators!I41",
+    "Indicators!I42",
+    "Indicators!I43",
+    "Indicators!I44",
+    "Indicators!I45",
+    "Indicators!I46"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jbeil Public School"
+   },
+   "block": 14,
+   "start": 97,
+   "end": 100
+  },
+  {
+   "id": "t_jss_f",
+   "text": "381",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 381,
+   "cells": [
+    "Indicators!I47",
+    "Indicators!I48",
+    "Indicators!I49"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jounieh Secondary School",
+    "sex": "F"
+   },
+   "block": 15,
+   "start": 53,
+   "end": 56
+  },
+  {
+   "id": "t_jss_m",
+   "text": "350",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 350,
+   "cells": [
+    "Indicators!I50",
+    "Indicators!I51",
+    "Indicators!I52"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jounieh Secondary School",
+    "sex": "M"
+   },
+   "block": 15,
+   "start": 73,
+   "end": 76
+  },
+  {
+   "id": "t_jss_ch",
+   "text": "328",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 328,
+   "cells": [
+    "Indicators!I47",
+    "Indicators!I50"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jounieh Secondary School",
+    "age": "CH"
+   },
+   "block": 15,
+   "start": 89,
+   "end": 92
+  },
+  {
+   "id": "t_jss_tot",
+   "text": "761",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "district_total",
+   "expected_value": 731,
+   "cells": [
+    "Indicators!I47",
+    "Indicators!I48",
+    "Indicators!I49",
+    "Indicators!I50",
+    "Indicators!I51",
+    "Indicators!I52"
+   ],
+   "spec": {
+    "ind": "EA-1",
+    "loc": "Jounieh Secondary School"
+   },
+   "block": 15,
+   "start": 102,
+   "end": 105
+  },
+  {
+   "id": "meals_err",
+   "text": "100,134",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "transposed",
+   "expected_value": 100143,
+   "cells": [
+    "Indicators!I65",
+    "Indicators!I66",
+    "Indicators!I67",
+    "Indicators!I68"
+   ],
+   "spec": {
+    "ind": "EA-3"
+   },
+   "block": 16,
+   "start": 42,
+   "end": 49
+  },
+  {
+   "id": "meals_june",
+   "text": "25,236",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 25236,
+   "cells": [
+    "Indicators!I61",
+    "Indicators!I62",
+    "Indicators!I63",
+    "Indicators!I64"
+   ],
+   "spec": {
+    "ind": "EA-3",
+    "period": "prev"
+   },
+   "block": 16,
+   "start": 135,
+   "end": 141
+  },
+  {
+   "id": "static-42",
+   "text": "4",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 17,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "mats_sps_boxes",
+   "text": "28",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 28.0,
+   "cells": [
+    "Dispatch summary!I44",
+    "Dispatch summary!I57",
+    "Dispatch summary!I70"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-MAT-001",
+    "dest": "Saida Public School",
+    "measure": "boxes"
+   },
+   "block": 18,
+   "start": 29,
+   "end": 31
+  },
+  {
+   "id": "static-44",
+   "text": "14",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 18,
+   "start": 65,
+   "end": 67
+  },
+  {
+   "id": "mats_jps_err",
+   "text": "27",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "boxes_as_pieces",
+   "expected_value": 270,
+   "cells": [
+    "Dispatch summary!I46",
+    "Dispatch summary!I59",
+    "Dispatch summary!I72"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-MAT-001",
+    "dest": "Jbeil Public School"
+   },
+   "block": 18,
+   "start": 102,
+   "end": 104
+  },
+  {
+   "id": "static-46",
+   "text": "21",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 18,
+   "start": 129,
+   "end": 131
+  },
+  {
+   "id": "bla_jss",
+   "text": "260",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 260,
+   "cells": [
+    "Dispatch summary!I51",
+    "Dispatch summary!I64",
+    "Dispatch summary!I77"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-BLA-001",
+    "dest": "Jounieh Secondary School"
+   },
+   "block": 18,
+   "start": 167,
+   "end": 170
+  },
+  {
+   "id": "kits_jss",
+   "text": "78 boxes and 3 pieces",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 315,
+   "cells": [
+    "Dispatch summary!I55",
+    "Dispatch summary!I68",
+    "Dispatch summary!I81"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001",
+    "dest": "Jounieh Secondary School"
+   },
+   "block": 18,
+   "start": 191,
+   "end": 212
+  },
+  {
+   "id": "kits_jps_err",
+   "text": "348",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "previous_quarter",
+   "expected_value": 340,
+   "cells": [
+    "Dispatch summary!I54",
+    "Dispatch summary!I67",
+    "Dispatch summary!I80"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-KIT-001",
+    "dest": "Jbeil Public School"
+   },
+   "block": 18,
+   "start": 266,
+   "end": 269
+  },
+  {
+   "id": "diapers_medical",
+   "text": "522",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 522,
+   "cells": [
+    "Dispatch summary!I56",
+    "Dispatch summary!I69",
+    "Dispatch summary!I82"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "HYG-DIA-002",
+    "dest": "Medical department, Saida centre"
+   },
+   "block": 18,
+   "start": 343,
+   "end": 346
+  },
+  {
+   "id": "bla_aug",
+   "text": "360",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 360,
+   "cells": [
+    "Dispatch summary!I61",
+    "Dispatch summary!I62",
+    "Dispatch summary!I63",
+    "Dispatch summary!I64"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "SHE-BLA-001",
+    "month": "Aug"
+   },
+   "block": 18,
+   "start": 451,
+   "end": 454
+  },
+  {
+   "id": "static-52",
+   "text": "5",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 19,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "mats_inkind",
+   "text": "60",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 60,
+   "cells": [
+    "Stock!H12"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "SHE-MAT-001",
+    "wh": "WH-14 Saida",
+    "measure": "received_inkind"
+   },
+   "block": 20,
+   "start": 26,
+   "end": 28
+  },
+  {
+   "id": "static-54",
+   "text": "14",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 20,
+   "start": 59,
+   "end": 61
+  },
+  {
+   "id": "static-55",
+   "text": "14",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 20,
+   "start": 184,
+   "end": 186
+  },
+  {
+   "id": "mats_wh14_balance",
+   "text": "110",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 110,
+   "cells": [
+    "Stock!J12"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "SHE-MAT-001",
+    "wh": "WH-14 Saida",
+    "measure": "closing"
+   },
+   "block": 20,
+   "start": 192,
+   "end": 195
+  },
+  {
+   "id": "static-57",
+   "text": "21",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 21,
+   "start": 6,
+   "end": 8
+  },
+  {
+   "id": "bla21_opening",
+   "text": "900",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 900,
+   "cells": [
+    "Stock!F15"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "SHE-BLA-001",
+    "wh": "WH-21 Jbeil",
+    "measure": "opening"
+   },
+   "block": 21,
+   "start": 63,
+   "end": 66
+  },
+  {
+   "id": "bla21_received",
+   "text": "180",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 180,
+   "cells": [
+    "Stock!G15",
+    "Stock!H15"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "SHE-BLA-001",
+    "wh": "WH-21 Jbeil",
+    "measure": "received"
+   },
+   "block": 21,
+   "start": 98,
+   "end": 101
+  },
+  {
+   "id": "bla21_dispatched",
+   "text": "540",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 540,
+   "cells": [
+    "Stock!I15"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "SHE-BLA-001",
+    "wh": "WH-21 Jbeil",
+    "measure": "dispatched"
+   },
+   "block": 21,
+   "start": 156,
+   "end": 159
+  },
+  {
+   "id": "bla21_balance_err",
+   "text": "580",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "wrong_balance",
+   "expected_value": 540,
+   "cells": [
+    "Stock!J15"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "SHE-BLA-001",
+    "wh": "WH-21 Jbeil",
+    "measure": "closing"
+   },
+   "block": 21,
+   "start": 169,
+   "end": 172
+  },
+  {
+   "id": "static-62",
+   "text": "6",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 23,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-63",
+   "text": "7",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 26,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-64",
+   "text": "two days",
+   "kind": "nonclaim",
+   "nonclaim_kind": "duration",
+   "block": 27,
+   "start": 319,
+   "end": 327
+  },
+  {
+   "id": "static-65",
+   "text": "August",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 27,
+   "start": 331,
+   "end": 337
+  },
+  {
+   "id": "static-66",
+   "text": "three",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 27,
+   "start": 339,
+   "end": 344
+  },
+  {
+   "id": "static-67",
+   "text": "8",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 28,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-68",
+   "text": "01 555 902",
+   "kind": "nonclaim",
+   "nonclaim_kind": "phone",
+   "block": 29,
+   "start": 111,
+   "end": 121
+  },
+  {
+   "id": "static-69",
+   "text": "9",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 30,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-70",
+   "text": "one",
+   "kind": "nonclaim",
+   "nonclaim_kind": "word",
+   "block": 31,
+   "start": 248,
+   "end": 251
+  },
+  {
+   "id": "static-71",
+   "text": "10",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 33,
+   "start": 0,
+   "end": 2
+  },
+  {
+   "id": "static-72",
+   "text": "one",
+   "kind": "nonclaim",
+   "nonclaim_kind": "word",
+   "block": 34,
+   "start": 128,
+   "end": 131
+  },
+  {
+   "id": "static-73",
+   "text": "October",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 34,
+   "start": 143,
+   "end": 150
+  }
+ ]
+}

@@ -14,10 +14,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from datagen import food_assistance, wash_winter  # noqa: E402
+from datagen import emergency_appeal, food_assistance, wash_winter  # noqa: E402
 from datagen.engine import Data, render  # noqa: E402
 
-MODULES = [food_assistance, wash_winter]
+MODULES = [food_assistance, emergency_appeal, wash_winter]
 
 
 def main() -> None:
