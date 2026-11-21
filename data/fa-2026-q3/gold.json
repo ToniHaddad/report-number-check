@@ -1,0 +1,1169 @@
+{
+ "report": "fa-2026-q3",
+ "split": "tuning",
+ "title": "Food Assistance for Vulnerable Households in North Lebanon, the Bekaa and the South",
+ "blocks": [
+  "Food Assistance for Vulnerable Households in North Lebanon, the Bekaa and the South",
+  "The Organization. Quarterly narrative report, project FA-2026. Reporting period 1 July to 30 September 2026. Submitted on 12 October 2026.",
+  "1. Summary",
+  "During the third quarter of 2026, the Organization delivered monthly food parcels to 3,513 households in Tripoli, Akkar, Zahle and Saida, reaching 90 percent of the quarterly target. In total the project supported 3,513 people. The warehouses dispatched 11,200 family food parcels to the centres, and six partner organizations received food items for their own kitchens and distributions.",
+  "All figures in this report come from the project's indicator table and from the stock records: goods received notes for incoming stock, waybills for every dispatch and the stock card of each item in each warehouse. Quantities are counted in pieces, with boxes given where staff ordered in full boxes.",
+  "2. Context",
+  "Food prices continued to rise over the summer, and families in the programme areas told centre staff that they were skipping meals or buying food on credit. Daily work in construction and agriculture fell during the hottest months, and many households now depend on the monthly parcel as their main source of staple food. The Organization continued to select households with the social workers at each centre, using home visits to confirm the situation of new families.",
+  "The food parcel was kept the same as in the previous quarter: rice, lentils, bulgur, sugar, oil, canned food and tea, packed for a family of five for one month. Larger families receive complementary items from the centre stock, recorded on a separate waybill.",
+  "3. Results by district",
+  "Households receiving monthly food parcels this quarter: Tripoli 1,134, Akkar 798, Zahle 932 and Saida 649, for a total of 3,453 households. At the end of June the project was supporting 3,240 households, and the increase came mostly from new families referred by the social workers in Akkar.",
+  "These households include 16,697 individuals: 8,716 women and girls and 8,081 men and boys. In Tripoli alone, the parcels fed nearly 5,500 people. Centres handed out 10,590 food parcels to households over the quarter, and since April more than 21,000 parcels have been distributed.",
+  "4. Dispatches from the warehouses",
+  "Every dispatch leaves a warehouse on a waybill signed by the receiving centre, department or partner. The Saida centre received 2,005 family food parcels from WH-14. From WH-03, the Tripoli centre received 1,896 boxes of canned cheese for families with young children, and the Cedar Hands Association, a partner that runs a community kitchen, received 36 boxes and 17 pieces of canned cheese.",
+  "The Zahle centre received 147 boxes of rice in 5 kg bags. The Halba centre received 492 bottles of sunflower oil, and the Social department of the Tripoli centre received 150 bags of lentils for its emergency cases. Canned cheese dispatches were highest in September, with 1,095 pieces. For comparison, the warehouses dispatched 11,089 food parcels in the second quarter.",
+  "Table 1 shows the dispatches to the main destinations for the quarter.",
+  "Destination: Tripoli centre | Item: Family food parcel | Pieces dispatched: 3,818 | Boxes: n/a",
+  "Destination: Halba centre | Item: Sunflower oil | Pieces dispatched: 492 | Boxes: 41",
+  "Destination: Saida Family Kitchen | Item: Canned cheese | Pieces dispatched: 528 | Boxes: 22",
+  "Destination: Saida Family Kitchen | Item: Rice | Pieces dispatched: 248 | Boxes: 62",
+  "5. Stock position",
+  "At WH-03 Tripoli the quarter opened with 120 bottles of sunflower oil. The warehouse received 1,200 bottles, dispatched 792 and closed the quarter with a balance of 468 bottles. At WH-14 Saida, a local supermarket chain donated 136 bags of rice in kind, recorded on a goods received note with the donor's name, and the rice balance at the end of September was 48 bags.",
+  "Stock for this project is kept apart from the other projects that share the same warehouses. Each balance is held per warehouse, per project, per item and per expiry date, and items are dispatched first expired, first out. No balance went below zero during the quarter.",
+  "6. Partners and departments",
+  "Partner organizations receive food items on the same waybills as the centres and confirm each delivery with a signature and a stamp. The Cedar Hands Association runs a community kitchen in Tripoli that serves older people living alone, and the Saida Family Kitchen prepares hot meals for families in two neighbourhoods near the old city. Both partners report the number of meals served each month, which the programme team checks against the quantities dispatched.",
+  "The Social department of the Tripoli centre holds a small reserve of lentils, rice and oil for families in crisis who cannot wait for the next monthly distribution. Each item taken from this reserve is recorded against the family's case number, so that the department can show which households were helped and why.",
+  "7. Monitoring",
+  "Centre staff record each parcel handed over against the household number from the registration list. The monitoring officer compares these lists with the waybills every month and follows up any difference with the centre manager before the figures are entered in the indicator table. A phone survey of a sample of households after each distribution round asks whether the parcel lasted the month and which items families ran out of first.",
+  "8. Accountability to affected people",
+  "Families can reach the Organization through the hotline on 01 555 384 or at the help desk of each centre. Most calls this quarter asked about the distribution date or about adding a new family member to the household record. Three complaints concerned the quality of the bulgur in one batch; the batch was withdrawn and replaced, and the supplier was informed.",
+  "9. Challenges",
+  "A delayed purchase order in August left the Halba centre short of lentils for nine days, so the centre gave a second bag of rice instead. Fuel prices raised the cost of each truck trip, and the logistics team combined dispatches to the Tripoli centre and to the Cedar Hands Association on the same day. Two cartons of oil were damaged in transit; a damage report was written and the operations manager approved the write-off.",
+  "10. Lessons learned",
+  "Recording boxes and pieces separately on the waybill reduced errors at the centres, because staff could check a delivery against the waybill without opening every box. Monthly reconciliation of the stock card with the dispatch summary caught two waybills recorded under the wrong project before the figures were reported.",
+  "The team also found that partners prefer fewer, larger deliveries, while centres prefer weekly deliveries that match their distribution days. From the next quarter the logistics team will plan the two kinds of destination separately.",
+  "11. Plans for the next quarter",
+  "In the fourth quarter the project plans to reach 3,800 households per month, subject to funding, and will add winter items to the parcel for families in Akkar and Zahle. A review of the parcel contents with the centres is planned for November 2026.",
+  "Synthetic report for testing. All names, figures and codes are invented."
+ ],
+ "items": [
+  {
+   "id": "static-0",
+   "text": "FA-2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 1,
+   "start": 54,
+   "end": 61
+  },
+  {
+   "id": "static-1",
+   "text": "1 July",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 1,
+   "start": 80,
+   "end": 86
+  },
+  {
+   "id": "static-2",
+   "text": "30 September 2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 1,
+   "start": 90,
+   "end": 107
+  },
+  {
+   "id": "static-3",
+   "text": "12 October 2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 1,
+   "start": 122,
+   "end": 137
+  },
+  {
+   "id": "static-4",
+   "text": "1",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 2,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-5",
+   "text": "2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "year",
+   "block": 3,
+   "start": 28,
+   "end": 32
+  },
+  {
+   "id": "hh_total",
+   "text": "3,513",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 3513,
+   "cells": [
+    "Indicators!I9",
+    "Indicators!I10",
+    "Indicators!I11",
+    "Indicators!I12"
+   ],
+   "spec": {
+    "ind": "FA-1"
+   },
+   "block": 3,
+   "start": 85,
+   "end": 90
+  },
+  {
+   "id": "hh_pct",
+   "text": "90 percent",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 90.0769,
+   "cells": [
+    "Indicators!I9",
+    "Indicators!I10",
+    "Indicators!I11",
+    "Indicators!I12",
+    "Indicators!H9",
+    "Indicators!H10",
+    "Indicators!H11",
+    "Indicators!H12"
+   ],
+   "spec": {
+    "ind": "FA-1",
+    "measure": "pct_target"
+   },
+   "block": 3,
+   "start": 147,
+   "end": 157
+  },
+  {
+   "id": "ppl_err",
+   "text": "3,513",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "households_as_people",
+   "expected_value": 16697,
+   "cells": [
+    "Indicators!I21",
+    "Indicators!I22",
+    "Indicators!I23",
+    "Indicators!I24",
+    "Indicators!I25",
+    "Indicators!I26",
+    "Indicators!I27",
+    "Indicators!I28"
+   ],
+   "spec": {
+    "ind": "FA-2"
+   },
+   "block": 3,
+   "start": 214,
+   "end": 219
+  },
+  {
+   "id": "parcels_dsp_total",
+   "text": "11,200",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 11200,
+   "cells": [
+    "Dispatch summary!I44",
+    "Dispatch summary!I45",
+    "Dispatch summary!I46",
+    "Dispatch summary!I47",
+    "Dispatch summary!I57",
+    "Dispatch summary!I58",
+    "Dispatch summary!I59",
+    "Dispatch summary!I60",
+    "Dispatch summary!I70",
+    "Dispatch summary!I71",
+    "Dispatch summary!I72",
+    "Dispatch summary!I73"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-PAR-001"
+   },
+   "block": 3,
+   "start": 254,
+   "end": 260
+  },
+  {
+   "id": "partners",
+   "text": "six",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 6,
+   "cells": [
+    "Indicators!I41",
+    "Indicators!I42",
+    "Indicators!I43",
+    "Indicators!I44"
+   ],
+   "spec": {
+    "ind": "FA-4"
+   },
+   "block": 3,
+   "start": 301,
+   "end": 304
+  },
+  {
+   "id": "static-11",
+   "text": "2",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 5,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-12",
+   "text": "five",
+   "kind": "nonclaim",
+   "nonclaim_kind": "word",
+   "block": 7,
+   "start": 141,
+   "end": 145
+  },
+  {
+   "id": "static-13",
+   "text": "3",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 8,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "hh_tripoli",
+   "text": "1,134",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1134,
+   "cells": [
+    "Indicators!I9"
+   ],
+   "spec": {
+    "ind": "FA-1",
+    "loc": "Tripoli"
+   },
+   "block": 9,
+   "start": 64,
+   "end": 69
+  },
+  {
+   "id": "hh_akkar",
+   "text": "798",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 798,
+   "cells": [
+    "Indicators!I10"
+   ],
+   "spec": {
+    "ind": "FA-1",
+    "loc": "Akkar"
+   },
+   "block": 9,
+   "start": 77,
+   "end": 80
+  },
+  {
+   "id": "hh_zahle",
+   "text": "932",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 932,
+   "cells": [
+    "Indicators!I11"
+   ],
+   "spec": {
+    "ind": "FA-1",
+    "loc": "Zahle"
+   },
+   "block": 9,
+   "start": 88,
+   "end": 91
+  },
+  {
+   "id": "hh_saida",
+   "text": "649",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 649,
+   "cells": [
+    "Indicators!I12"
+   ],
+   "spec": {
+    "ind": "FA-1",
+    "loc": "Saida"
+   },
+   "block": 9,
+   "start": 102,
+   "end": 105
+  },
+  {
+   "id": "hh_total_err",
+   "text": "3,453",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "district_total",
+   "expected_value": 3513,
+   "cells": [
+    "Indicators!I9",
+    "Indicators!I10",
+    "Indicators!I11",
+    "Indicators!I12"
+   ],
+   "spec": {
+    "ind": "FA-1"
+   },
+   "block": 9,
+   "start": 122,
+   "end": 127
+  },
+  {
+   "id": "hh_june",
+   "text": "3,240",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 3240,
+   "cells": [
+    "Indicators!I5",
+    "Indicators!I6",
+    "Indicators!I7",
+    "Indicators!I8"
+   ],
+   "spec": {
+    "ind": "FA-1",
+    "period": "prev"
+   },
+   "block": 9,
+   "start": 186,
+   "end": 191
+  },
+  {
+   "id": "ppl_total",
+   "text": "16,697",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 16697,
+   "cells": [
+    "Indicators!I21",
+    "Indicators!I22",
+    "Indicators!I23",
+    "Indicators!I24",
+    "Indicators!I25",
+    "Indicators!I26",
+    "Indicators!I27",
+    "Indicators!I28"
+   ],
+   "spec": {
+    "ind": "FA-2"
+   },
+   "block": 10,
+   "start": 25,
+   "end": 31
+  },
+  {
+   "id": "ppl_f",
+   "text": "8,716",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 8716,
+   "cells": [
+    "Indicators!I21",
+    "Indicators!I23",
+    "Indicators!I25",
+    "Indicators!I27"
+   ],
+   "spec": {
+    "ind": "FA-2",
+    "sex": "F"
+   },
+   "block": 10,
+   "start": 45,
+   "end": 50
+  },
+  {
+   "id": "ppl_m_err",
+   "text": "8,081",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "split_sum",
+   "expected_value": 7981,
+   "cells": [
+    "Indicators!I22",
+    "Indicators!I24",
+    "Indicators!I26",
+    "Indicators!I28"
+   ],
+   "spec": {
+    "ind": "FA-2",
+    "sex": "M"
+   },
+   "block": 10,
+   "start": 71,
+   "end": 76
+  },
+  {
+   "id": "ppl_nearly",
+   "text": "5,500",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 5327,
+   "cells": [
+    "Indicators!I21",
+    "Indicators!I22"
+   ],
+   "spec": {
+    "ind": "FA-2",
+    "loc": "Tripoli"
+   },
+   "block": 10,
+   "start": 132,
+   "end": 137
+  },
+  {
+   "id": "parcels_dist",
+   "text": "10,590",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 10590,
+   "cells": [
+    "Indicators!I33",
+    "Indicators!I34",
+    "Indicators!I35",
+    "Indicators!I36"
+   ],
+   "spec": {
+    "ind": "FA-3"
+   },
+   "block": 10,
+   "start": 165,
+   "end": 171
+  },
+  {
+   "id": "parcels_cum_err",
+   "text": "21,000",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "hedge_overstates",
+   "expected_value": 20935,
+   "cells": [
+    "Indicators!I29",
+    "Indicators!I30",
+    "Indicators!I31",
+    "Indicators!I32",
+    "Indicators!I33",
+    "Indicators!I34",
+    "Indicators!I35",
+    "Indicators!I36"
+   ],
+   "spec": {
+    "ind": "FA-3",
+    "period": "cum"
+   },
+   "block": 10,
+   "start": 243,
+   "end": 249
+  },
+  {
+   "id": "static-26",
+   "text": "4",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 11,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "parcels_saida_err",
+   "text": "2,005",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "transposed",
+   "expected_value": 2050,
+   "cells": [
+    "Dispatch summary!I47",
+    "Dispatch summary!I60",
+    "Dispatch summary!I73"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-PAR-001",
+    "dest": "Saida centre"
+   },
+   "block": 12,
+   "start": 128,
+   "end": 133
+  },
+  {
+   "id": "static-28",
+   "text": "14",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 12,
+   "start": 162,
+   "end": 164
+  },
+  {
+   "id": "static-29",
+   "text": "03",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 12,
+   "start": 174,
+   "end": 176
+  },
+  {
+   "id": "cheese_tripoli_err",
+   "text": "1,896",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "pieces_as_boxes",
+   "expected_value": 79.0,
+   "cells": [
+    "Dispatch summary!I48",
+    "Dispatch summary!I61",
+    "Dispatch summary!I74"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-CHE-002",
+    "dest": "Tripoli centre",
+    "measure": "boxes"
+   },
+   "block": 12,
+   "start": 206,
+   "end": 211
+  },
+  {
+   "id": "cheese_cedar",
+   "text": "36 boxes and 17 pieces",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 881,
+   "cells": [
+    "Dispatch summary!I49",
+    "Dispatch summary!I62",
+    "Dispatch summary!I75"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-CHE-002",
+    "dest": "Cedar Hands Association"
+   },
+   "block": 12,
+   "start": 352,
+   "end": 374
+  },
+  {
+   "id": "rice_zahle_boxes",
+   "text": "147",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 147.0,
+   "cells": [
+    "Dispatch summary!I51",
+    "Dispatch summary!I64",
+    "Dispatch summary!I77"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-RIC-001",
+    "dest": "Zahle centre",
+    "measure": "boxes"
+   },
+   "block": 13,
+   "start": 26,
+   "end": 29
+  },
+  {
+   "id": "static-33",
+   "text": "5 kg",
+   "kind": "nonclaim",
+   "nonclaim_kind": "measure",
+   "block": 13,
+   "start": 47,
+   "end": 51
+  },
+  {
+   "id": "oil_halba",
+   "text": "492",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 492,
+   "cells": [
+    "Dispatch summary!I54",
+    "Dispatch summary!I67",
+    "Dispatch summary!I80"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-OIL-001",
+    "dest": "Halba centre"
+   },
+   "block": 13,
+   "start": 84,
+   "end": 87
+  },
+  {
+   "id": "lentils_social",
+   "text": "150",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 150,
+   "cells": [
+    "Dispatch summary!I56",
+    "Dispatch summary!I69",
+    "Dispatch summary!I82"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-LEN-001",
+    "dest": "Social department, Tripoli centre"
+   },
+   "block": 13,
+   "start": 171,
+   "end": 174
+  },
+  {
+   "id": "cheese_sep",
+   "text": "1,095",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1095,
+   "cells": [
+    "Dispatch summary!I74",
+    "Dispatch summary!I75",
+    "Dispatch summary!I76"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-CHE-002",
+    "month": "Sep"
+   },
+   "block": 13,
+   "start": 273,
+   "end": 278
+  },
+  {
+   "id": "parcels_q2",
+   "text": "11,089",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 11089,
+   "cells": [
+    "Dispatch summary!I5",
+    "Dispatch summary!I6",
+    "Dispatch summary!I7",
+    "Dispatch summary!I8",
+    "Dispatch summary!I18",
+    "Dispatch summary!I19",
+    "Dispatch summary!I20",
+    "Dispatch summary!I21",
+    "Dispatch summary!I31",
+    "Dispatch summary!I32",
+    "Dispatch summary!I33",
+    "Dispatch summary!I34"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-PAR-001",
+    "period": "prev"
+   },
+   "block": 13,
+   "start": 329,
+   "end": 335
+  },
+  {
+   "id": "static-38",
+   "text": "1",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 14,
+   "start": 6,
+   "end": 7
+  },
+  {
+   "id": "t_par_tri_pcs",
+   "text": "3,818",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 3818,
+   "cells": [
+    "Dispatch summary!I44",
+    "Dispatch summary!I57",
+    "Dispatch summary!I70"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-PAR-001",
+    "dest": "Tripoli centre"
+   },
+   "block": 15,
+   "start": 76,
+   "end": 81
+  },
+  {
+   "id": "static-40",
+   "text": "n/a",
+   "kind": "nonclaim",
+   "nonclaim_kind": "word",
+   "block": 15,
+   "start": 91,
+   "end": 94
+  },
+  {
+   "id": "t_oil_hal_pcs",
+   "text": "492",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 492,
+   "cells": [
+    "Dispatch summary!I54",
+    "Dispatch summary!I67",
+    "Dispatch summary!I80"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-OIL-001",
+    "dest": "Halba centre"
+   },
+   "block": 16,
+   "start": 69,
+   "end": 72
+  },
+  {
+   "id": "t_oil_hal_box",
+   "text": "41",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 41.0,
+   "cells": [
+    "Dispatch summary!I54",
+    "Dispatch summary!I67",
+    "Dispatch summary!I80"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-OIL-001",
+    "dest": "Halba centre",
+    "measure": "boxes"
+   },
+   "block": 16,
+   "start": 82,
+   "end": 84
+  },
+  {
+   "id": "t_che_sfk_pcs",
+   "text": "528",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 528,
+   "cells": [
+    "Dispatch summary!I50",
+    "Dispatch summary!I63",
+    "Dispatch summary!I76"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-CHE-002",
+    "dest": "Saida Family Kitchen"
+   },
+   "block": 17,
+   "start": 77,
+   "end": 80
+  },
+  {
+   "id": "t_che_sfk_box",
+   "text": "22",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 22.0,
+   "cells": [
+    "Dispatch summary!I50",
+    "Dispatch summary!I63",
+    "Dispatch summary!I76"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-CHE-002",
+    "dest": "Saida Family Kitchen",
+    "measure": "boxes"
+   },
+   "block": 17,
+   "start": 90,
+   "end": 92
+  },
+  {
+   "id": "t_ric_sfk_pcs",
+   "text": "248",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 248,
+   "cells": [
+    "Dispatch summary!I52",
+    "Dispatch summary!I65",
+    "Dispatch summary!I78"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-RIC-001",
+    "dest": "Saida Family Kitchen"
+   },
+   "block": 18,
+   "start": 68,
+   "end": 71
+  },
+  {
+   "id": "t_ric_sfk_box",
+   "text": "62",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 62.0,
+   "cells": [
+    "Dispatch summary!I52",
+    "Dispatch summary!I65",
+    "Dispatch summary!I78"
+   ],
+   "spec": {
+    "src": "dispatch",
+    "item": "FOO-RIC-001",
+    "dest": "Saida Family Kitchen",
+    "measure": "boxes"
+   },
+   "block": 18,
+   "start": 81,
+   "end": 83
+  },
+  {
+   "id": "static-47",
+   "text": "5",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 19,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-48",
+   "text": "03",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 20,
+   "start": 6,
+   "end": 8
+  },
+  {
+   "id": "oil_opening",
+   "text": "120",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 120,
+   "cells": [
+    "Stock!F25"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "FOO-OIL-001",
+    "wh": "WH-03 Tripoli",
+    "measure": "opening"
+   },
+   "block": 20,
+   "start": 41,
+   "end": 44
+  },
+  {
+   "id": "oil_received",
+   "text": "1,200",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 1200,
+   "cells": [
+    "Stock!G25",
+    "Stock!H25"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "FOO-OIL-001",
+    "wh": "WH-03 Tripoli",
+    "measure": "received"
+   },
+   "block": 20,
+   "start": 94,
+   "end": 99
+  },
+  {
+   "id": "oil_dispatched",
+   "text": "792",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 792,
+   "cells": [
+    "Stock!I25"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "FOO-OIL-001",
+    "wh": "WH-03 Tripoli",
+    "measure": "dispatched"
+   },
+   "block": 20,
+   "start": 120,
+   "end": 123
+  },
+  {
+   "id": "oil_balance_err",
+   "text": "468",
+   "kind": "claim",
+   "status": "inconsistent",
+   "error_type": "wrong_balance",
+   "expected_value": 528,
+   "cells": [
+    "Stock!J25"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "FOO-OIL-001",
+    "wh": "WH-03 Tripoli",
+    "measure": "closing"
+   },
+   "block": 20,
+   "start": 165,
+   "end": 168
+  },
+  {
+   "id": "static-53",
+   "text": "14",
+   "kind": "nonclaim",
+   "nonclaim_kind": "code",
+   "block": 20,
+   "start": 184,
+   "end": 186
+  },
+  {
+   "id": "rice_inkind",
+   "text": "136",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 136,
+   "cells": [
+    "Stock!H24"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "FOO-RIC-001",
+    "wh": "WH-14 Saida",
+    "measure": "received_inkind"
+   },
+   "block": 20,
+   "start": 228,
+   "end": 231
+  },
+  {
+   "id": "rice_balance",
+   "text": "48",
+   "kind": "claim",
+   "status": "consistent",
+   "error_type": null,
+   "expected_value": 48,
+   "cells": [
+    "Stock!J24"
+   ],
+   "spec": {
+    "src": "stock",
+    "item": "FOO-RIC-001",
+    "wh": "WH-14 Saida",
+    "measure": "closing"
+   },
+   "block": 20,
+   "start": 360,
+   "end": 362
+  },
+  {
+   "id": "static-56",
+   "text": "6",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 22,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-57",
+   "text": "two",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 23,
+   "start": 300,
+   "end": 303
+  },
+  {
+   "id": "static-58",
+   "text": "7",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 25,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-59",
+   "text": "8",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 27,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-60",
+   "text": "01 555 384",
+   "kind": "nonclaim",
+   "nonclaim_kind": "phone",
+   "block": 28,
+   "start": 59,
+   "end": 69
+  },
+  {
+   "id": "static-61",
+   "text": "Three",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 28,
+   "start": 225,
+   "end": 230
+  },
+  {
+   "id": "static-62",
+   "text": "9",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 29,
+   "start": 0,
+   "end": 1
+  },
+  {
+   "id": "static-63",
+   "text": "August",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 30,
+   "start": 28,
+   "end": 34
+  },
+  {
+   "id": "static-64",
+   "text": "nine days",
+   "kind": "nonclaim",
+   "nonclaim_kind": "duration",
+   "block": 30,
+   "start": 78,
+   "end": 87
+  },
+  {
+   "id": "static-65",
+   "text": "Two",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 30,
+   "start": 303,
+   "end": 306
+  },
+  {
+   "id": "static-66",
+   "text": "10",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 31,
+   "start": 0,
+   "end": 2
+  },
+  {
+   "id": "static-67",
+   "text": "two",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 32,
+   "start": 242,
+   "end": 245
+  },
+  {
+   "id": "static-68",
+   "text": "11",
+   "kind": "nonclaim",
+   "nonclaim_kind": "section",
+   "block": 34,
+   "start": 0,
+   "end": 2
+  },
+  {
+   "id": "static-69",
+   "text": "3,800",
+   "kind": "claim",
+   "status": "unverifiable",
+   "error_type": null,
+   "expected_value": null,
+   "cells": [],
+   "block": 35,
+   "start": 49,
+   "end": 54
+  },
+  {
+   "id": "static-70",
+   "text": "November 2026",
+   "kind": "nonclaim",
+   "nonclaim_kind": "date",
+   "block": 35,
+   "start": 234,
+   "end": 247
+  }
+ ]
+}
