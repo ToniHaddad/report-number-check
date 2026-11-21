@@ -18,6 +18,7 @@ COLUMN_NAMES = {
     "location": ["location", "governorate", "county", "district", "region", "area", "department",
                  "province", "site", "state"],
     "sex": ["sex", "gender", "sex/gender", "disaggregation"],
+    "age": ["age group", "age", "age band", "age range"],
     "target": ["target", "planned", "plan", "target value"],
     "achieved": ["achieved", "actual", "result", "reached", "achievement", "actual value"],
 }
